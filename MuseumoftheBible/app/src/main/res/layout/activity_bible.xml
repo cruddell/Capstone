@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_brown_50"
+    tools:context=".Bible.BibleActivity">
+    <android.widget.Toolbar
+        android:id="@+id/toolbar_actionbar"
+        android:background="@color/md_brown_700"
+        android:layout_width="match_parent"
+        android:elevation="4dp"
+        android:layout_height="?actionBarSize">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="?actionBarSize"
+                android:layout_height="?actionBarSize"
+                android:padding="@dimen/square_image_margin"
+                android:id="@+id/actionbar_icon"
+                android:transitionName="button_bible"
+                android:src="@drawable/bible"
+                android:background="@color/md_brown_700"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:text="@string/bible"
+                android:id="@+id/titleView"
+                android:textColor="@color/md_brown_50"
+                android:textSize="24sp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin" />
+        </LinearLayout>
+
+    </android.widget.Toolbar>
+
+    <com.ruddell.museumofthebible.views.CustomViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar_actionbar"
+        android:id="@+id/viewPager"></com.ruddell.museumofthebible.views.CustomViewPager>
+
+
+</RelativeLayout>

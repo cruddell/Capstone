@@ -1,0 +1,13 @@
+<!--
+  ~ Copyright (c) 2015. Museum of the Bible
+  -->
+
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar_actionbar"
+    android:background="@color/md_blue_700"
+    android:layout_width="match_parent"
+    android:elevation="4dp"
+    android:layout_height="?actionBarSize">
+</android.support.v7.widget.Toolbar>

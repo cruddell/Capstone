@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_brown_50"
+    tools:context=".Ticketing.TicketActivity">
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar_actionbar"
+        android:background="@color/md_orange_700"
+        android:layout_width="match_parent"
+        android:elevation="4dp"
+        android:layout_height="?actionBarSize">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="?actionBarSize"
+                android:layout_height="?actionBarSize"
+                android:padding="@dimen/square_image_margin"
+                android:id="@+id/actionbar_icon"
+                android:transitionName="button_tickets"
+                android:src="@drawable/tickets"
+                android:background="@color/md_orange_700" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/tickets"
+                android:id="@+id/titleView"
+                android:textColor="@color/md_orange_50"
+                android:textSize="24sp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin" />
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar_actionbar">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView2"
+            android:background="@drawable/musuembg" />
+
+        <com.ruddell.museumofthebible.views.CustomViewPager
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar_actionbar"
+            android:id="@+id/viewPager"
+            android:layout_margin="30dp"></com.ruddell.museumofthebible.views.CustomViewPager>
+    </FrameLayout>
+
+
+
+
+</RelativeLayout>

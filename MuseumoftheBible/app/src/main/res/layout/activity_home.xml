@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_blue_50">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView"
+        android:background="@drawable/musuembg"
+        android:alpha=".75" />
+
+    <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.ruddell.museumofthebible.Home"
+    android:layout_gravity="center_vertical">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20px"
+            android:layout_weight="1" />
+
+        <com.ruddell.museumofthebible.views.AnimatedImageButton
+            android:layout_width="@dimen/square_button_two_col"
+            android:layout_height="@dimen/square_button_two_col"
+            android:id="@+id/button_tickets"
+            android:layout_marginLeft="@dimen/square_button_margin"
+            android:layout_marginTop="@dimen/square_button_margin"
+            android:background="@drawable/home_button_orange"
+            android:src="@drawable/tickets"
+            android:visibility="invisible"
+            android:onClick="onClick" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20px"
+            android:layout_weight="1" />
+
+        <com.ruddell.museumofthebible.views.AnimatedImageButton
+            android:layout_width="@dimen/square_button_two_col"
+            android:layout_height="@dimen/square_button_two_col"
+            android:id="@+id/button_bible"
+            android:layout_marginTop="@dimen/square_button_margin"
+            android:layout_marginRight="@dimen/square_button_margin"
+            android:layout_marginLeft="@dimen/square_button_margin"
+            android:background="@drawable/home_button_brown"
+            android:src="@drawable/bible"
+            android:visibility="invisible"
+            android:onClick="onClick" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20px"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20px"
+            android:layout_weight="1" />
+
+        <com.ruddell.museumofthebible.views.AnimatedImageButton
+            android:layout_width="@dimen/square_button_two_col"
+            android:layout_height="@dimen/square_button_two_col"
+            android:id="@+id/button_exhibits"
+            android:layout_marginLeft="@dimen/square_button_margin"
+            android:layout_marginTop="@dimen/square_button_margin"
+            android:background="@drawable/home_button_red"
+            android:src="@drawable/exhibit"
+            android:visibility="invisible"
+            android:transitionName="button_exhibits"
+            android:onClick="onClick" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20px"
+            android:layout_weight="1" />
+
+        <com.ruddell.museumofthebible.views.AnimatedImageButton
+            android:layout_width="@dimen/square_button_two_col"
+            android:layout_height="@dimen/square_button_two_col"
+            android:id="@+id/button_map"
+            android:layout_marginTop="@dimen/square_button_margin"
+            android:layout_marginRight="@dimen/square_button_margin"
+            android:layout_marginLeft="@dimen/square_button_margin"
+            android:background="@drawable/home_button_purple"
+            android:transitionName="button_map"
+            android:src="@drawable/map"
+            android:visibility="invisible"
+            android:onClick="onClick" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20px"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20px"
+            android:layout_weight="1" />
+
+        <com.ruddell.museumofthebible.views.AnimatedImageButton
+            android:layout_width="@dimen/square_button_two_col"
+            android:layout_height="@dimen/square_button_two_col"
+            android:id="@+id/button_help"
+            android:layout_marginLeft="@dimen/square_button_margin"
+            android:layout_marginTop="@dimen/square_button_margin"
+            android:transitionName="button_help"
+            android:background="@drawable/home_button_blue"
+            android:src="@drawable/contact"
+            android:visibility="invisible"
+            android:onClick="onClick" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20px"
+            android:layout_weight="1" />
+
+        <com.ruddell.museumofthebible.views.AnimatedImageButton
+            android:layout_width="@dimen/square_button_two_col"
+            android:layout_height="@dimen/square_button_two_col"
+            android:id="@+id/button_settings"
+            android:layout_marginTop="@dimen/square_button_margin"
+            android:layout_marginRight="@dimen/square_button_margin"
+            android:layout_marginLeft="@dimen/square_button_margin"
+            android:background="@drawable/home_button_teal"
+            android:src="@drawable/settings"
+            android:visibility="invisible"
+            android:onClick="onClick" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20px"
+            android:layout_weight="1" />
+    </LinearLayout>
+</LinearLayout>
+</FrameLayout>

@@ -1,0 +1,407 @@
+/**
+ Export to JSON plugin for PHPMyAdmin
+ @version 0.1
+ */
+
+// Database 'bible'
+
+// bible.Books
+{
+ "books": [
+  {
+   "_ID": "1",
+   "short_name": "Gen",
+   "long_name": "Genesis"
+  },
+  {
+   "_ID": "2",
+   "short_name": "Exo",
+   "long_name": "Exodus"
+  },
+  {
+   "_ID": "3",
+   "short_name": "Lev",
+   "long_name": "Leviticus"
+  },
+  {
+   "_ID": "4",
+   "short_name": "Num",
+   "long_name": "Numbers"
+  },
+  {
+   "_ID": "5",
+   "short_name": "Deu",
+   "long_name": "Deuteronomy"
+  },
+  {
+   "_ID": "6",
+   "short_name": "Josh",
+   "long_name": "Joshua"
+  },
+  {
+   "_ID": "7",
+   "short_name": "Judg",
+   "long_name": "Judges"
+  },
+  {
+   "_ID": "8",
+   "short_name": "Ruth",
+   "long_name": "Ruth"
+  },
+  {
+   "_ID": "9",
+   "short_name": "1Sam",
+   "long_name": "1 Samuel"
+  },
+  {
+   "_ID": "10",
+   "short_name": "2Sam",
+   "long_name": "2 Samuel"
+  },
+  {
+   "_ID": "11",
+   "short_name": "1Kin",
+   "long_name": "1 Kings"
+  },
+  {
+   "_ID": "12",
+   "short_name": "2Kin",
+   "long_name": "2 Kings"
+  },
+  {
+   "_ID": "13",
+   "short_name": "1Chr",
+   "long_name": "1 Chronicles"
+  },
+  {
+   "_ID": "14",
+   "short_name": "2Chr",
+   "long_name": "2 Chronicles"
+  },
+  {
+   "_ID": "15",
+   "short_name": "Ezr",
+   "long_name": "Ezra"
+  },
+  {
+   "_ID": "16",
+   "short_name": "Neh",
+   "long_name": "Nehemiah"
+  },
+  {
+   "_ID": "17",
+   "short_name": "Esth",
+   "long_name": "Esther"
+  },
+  {
+   "_ID": "18",
+   "short_name": "Job",
+   "long_name": "Job"
+  },
+  {
+   "_ID": "19",
+   "short_name": "Ps",
+   "long_name": "Psalms"
+  },
+  {
+   "_ID": "20",
+   "short_name": "Prov",
+   "long_name": "Proverbs"
+  },
+  {
+   "_ID": "21",
+   "short_name": "Eccl",
+   "long_name": "Ecclesiastes"
+  },
+  {
+   "_ID": "22",
+   "short_name": "Song",
+   "long_name": "Song of Solomon"
+  },
+  {
+   "_ID": "23",
+   "short_name": "Isa",
+   "long_name": "Isaiah"
+  },
+  {
+   "_ID": "24",
+   "short_name": "Jer",
+   "long_name": "Jeremiah"
+  },
+  {
+   "_ID": "25",
+   "short_name": "Lam",
+   "long_name": "Lamentations"
+  },
+  {
+   "_ID": "26",
+   "short_name": "Ezek",
+   "long_name": "Ezekiel"
+  },
+  {
+   "_ID": "27",
+   "short_name": "Dan",
+   "long_name": "Daniel"
+  },
+  {
+   "_ID": "28",
+   "short_name": "Hos",
+   "long_name": "Hosea"
+  },
+  {
+   "_ID": "29",
+   "short_name": "Joel",
+   "long_name": "Joel"
+  },
+  {
+   "_ID": "30",
+   "short_name": "Am",
+   "long_name": "Amos"
+  },
+  {
+   "_ID": "31",
+   "short_name": "Oba",
+   "long_name": "Obadiah"
+  },
+  {
+   "_ID": "32",
+   "short_name": "Jona",
+   "long_name": "Jonah"
+  },
+  {
+   "_ID": "33",
+   "short_name": "Mic",
+   "long_name": "Micah"
+  },
+  {
+   "_ID": "34",
+   "short_name": "Nah",
+   "long_name": "Nahum"
+  },
+  {
+   "_ID": "35",
+   "short_name": "Hab",
+   "long_name": "Habakkuk"
+  },
+  {
+   "_ID": "36",
+   "short_name": "Zeph",
+   "long_name": "Zephaniah"
+  },
+  {
+   "_ID": "37",
+   "short_name": "Hag",
+   "long_name": "Haggai"
+  },
+  {
+   "_ID": "38",
+   "short_name": "Zech",
+   "long_name": "Zechariah"
+  },
+  {
+   "_ID": "39",
+   "short_name": "Mal",
+   "long_name": "Malachi"
+  },
+  {
+   "_ID": "40",
+   "short_name": "Mat",
+   "long_name": "Matthew"
+  },
+  {
+   "_ID": "41",
+   "short_name": "Mar",
+   "long_name": "Mark"
+  },
+  {
+   "_ID": "42",
+   "short_name": "Luk",
+   "long_name": "Luke"
+  },
+  {
+   "_ID": "43",
+   "short_name": "John",
+   "long_name": "John"
+  },
+  {
+   "_ID": "44",
+   "short_name": "Acts",
+   "long_name": "Acts"
+  },
+  {
+   "_ID": "45",
+   "short_name": "Rom",
+   "long_name": "Romans"
+  },
+  {
+   "_ID": "46",
+   "short_name": "1Cor",
+   "long_name": "1 Corinthians"
+  },
+  {
+   "_ID": "47",
+   "short_name": "2Cor",
+   "long_name": "2 Corinthians"
+  },
+  {
+   "_ID": "48",
+   "short_name": "Gal",
+   "long_name": "Galatians"
+  },
+  {
+   "_ID": "49",
+   "short_name": "Eph",
+   "long_name": "Ephesians"
+  },
+  {
+   "_ID": "50",
+   "short_name": "Phil",
+   "long_name": "Philippians"
+  },
+  {
+   "_ID": "51",
+   "short_name": "Col",
+   "long_name": "Colossians"
+  },
+  {
+   "_ID": "52",
+   "short_name": "1Ths",
+   "long_name": "1 Thessalonians"
+  },
+  {
+   "_ID": "53",
+   "short_name": "2Ths",
+   "long_name": "2 Thessalonians"
+  },
+  {
+   "_ID": "54",
+   "short_name": "1Tim",
+   "long_name": "1 Timothy"
+  },
+  {
+   "_ID": "55",
+   "short_name": "2Tim",
+   "long_name": "2 Timothy"
+  },
+  {
+   "_ID": "56",
+   "short_name": "Tit",
+   "long_name": "Titus"
+  },
+  {
+   "_ID": "57",
+   "short_name": "Phlm",
+   "long_name": "Philemon"
+  },
+  {
+   "_ID": "58",
+   "short_name": "Heb",
+   "long_name": "Hebrews"
+  },
+  {
+   "_ID": "59",
+   "short_name": "Jam",
+   "long_name": "James"
+  },
+  {
+   "_ID": "60",
+   "short_name": "1Pet",
+   "long_name": "1 Peter"
+  },
+  {
+   "_ID": "61",
+   "short_name": "2Pet",
+   "long_name": "2 Peter"
+  },
+  {
+   "_ID": "62",
+   "short_name": "1Jn",
+   "long_name": "1 John"
+  },
+  {
+   "_ID": "63",
+   "short_name": "2Jn",
+   "long_name": "2 John"
+  },
+  {
+   "_ID": "64",
+   "short_name": "3Jn",
+   "long_name": "3 John"
+  },
+  {
+   "_ID": "65",
+   "short_name": "Jud",
+   "long_name": "Jude"
+  },
+  {
+   "_ID": "66",
+   "short_name": "Rev",
+   "long_name": "Revelation"
+  },
+  {
+   "_ID": "67",
+   "short_name": "2Ezr",
+   "long_name": "2 Ezra"
+  },
+  {
+   "_ID": "68",
+   "short_name": "Tob",
+   "long_name": "Tobit"
+  },
+  {
+   "_ID": "69",
+   "short_name": "Judi",
+   "long_name": "Judith"
+  },
+  {
+   "_ID": "70",
+   "short_name": "1Ma",
+   "long_name": "1 Maccabees"
+  },
+  {
+   "_ID": "71",
+   "short_name": "2Ma",
+   "long_name": "2 Maccabees"
+  },
+  {
+   "_ID": "72",
+   "short_name": "Wis",
+   "long_name": "Wisdom"
+  },
+  {
+   "_ID": "73",
+   "short_name": "Sir",
+   "long_name": "Sirach"
+  },
+  {
+   "_ID": "74",
+   "short_name": "Bar",
+   "long_name": "Baruch"
+  },
+  {
+   "_ID": "75",
+   "short_name": "Azar",
+   "long_name": "Azariah"
+  },
+  {
+   "_ID": "76",
+   "short_name": "Sus",
+   "long_name": "Susanna"
+  },
+  {
+   "_ID": "77",
+   "short_name": "Man",
+   "long_name": "Prayer of Manasseh"
+  },
+  {
+   "_ID": "78",
+   "short_name": "Bel",
+   "long_name": "Bel and Dragon"
+  },
+  {
+   "_ID": "79",
+   "short_name": "Epi",
+   "long_name": "Epistle of Jeremiah"
+  }
+ ]
+}

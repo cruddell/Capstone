@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Museum of the Bible</string>
+    <string name="featured_exhibits">Featured Exhibits</string>
+    <string name="bible">King James Bible</string>
+    <string name="tickets">Buy Tickets</string>
+    <string name="mapscreen_title">Location</string>
+    <string name="map_snippet">Inviting all people to engage with the Bible</string>
+    <string name="ticket">Ticket</string>
+    <string name="charge_label">0 x $15/ticket: $0.00</string>
+    <string name="amount_to_charge_label">Amount to charge:</string>
+    <string name="show_ticket_to_agent">Show this ticket to cashier to retrieve your Digital Companion and being your museum journey!</string>
+    <string name="credit_card_demo_app">NOTE: THIS IS A PREVIEW APP.  YOUR CREDIT CARD WILL NOT BE CHARGED!  THIS IS FOR DEMONSTRATION PURPOSES ONLY.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="purchase">Purchase</string>
+    <string name="cancel">Cancel</string>
+    <string name="expires">Expires:</string>
+    <string name="cvc">CVC:</string>
+    <string name="card_number">Card Number:</string>
+    <string name="_0000_0000_0000_0000">0000 0000 0000 0000</string>
+
+</resources>

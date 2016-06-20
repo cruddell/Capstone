@@ -1,0 +1,28 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="square_button_two_col">150dp</dimen>
+    <dimen name="square_image">45dp</dimen>
+    <dimen name="square_button_margin">10dp</dimen>
+    <dimen name="square_image_margin">10dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="home_button_background_corner_radius">8dp</dimen>
+    <dimen name="green_border_corner_radius">2dp</dimen>
+    <dimen name="home_button_background_paddng">2dp</dimen>
+    <dimen name="bible_books_list_padding">5dp</dimen>
+    <dimen name="bible_books_list_font_size">24sp</dimen>
+    <dimen name="bible_text_font_size">18sp</dimen>
+    <dimen name="ticketing_field_margin_top">30dp</dimen>
+    <dimen name="payment_field_padding">5dp</dimen>
+    <dimen name="payment_field_margin_top">20dp</dimen>
+    <dimen name="payment_field_margin_top_lg">40dp</dimen>
+    <dimen name="payment_field_margin_left">40dp</dimen>
+    <dimen name="payment_field_margin_left_sm">20dp</dimen>
+    <dimen name="card_scan_icon_size">35dp</dimen>
+    <dimen name="ticket_qrcode_size">200dp</dimen>
+
+    <dimen name="gallery_image_fragment_viewpager_page_margin">-100dp</dimen>
+    <dimen name="gallery_image_fragment_viewpager_content_margin">50dp</dimen>
+    <dimen name="gallery_image_fragment_viewpager_content_marginTop">20dp</dimen>
+</resources>

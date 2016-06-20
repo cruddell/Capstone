@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/md_orange_300"/>
+    <corners android:radius="@dimen/home_button_background_corner_radius" />
+    <padding
+        android:top="@dimen/home_button_background_paddng"
+        android:left="@dimen/home_button_background_paddng"
+        android:bottom="@dimen/home_button_background_paddng"
+        android:right="@dimen/home_button_background_paddng" />
+
+</shape> 

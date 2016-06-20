@@ -1,0 +1,222 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.ruddell.museumofthebible.Ticketing.PaymentFragment">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:background="@color/md_orange_50"
+        android:alpha=".75"
+        android:id="@+id/backgroundView"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/payment_field_margin_top">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/relativeLayout2"
+                    android:layout_height="wrap_content"
+                    android:background="@color/md_blue_50">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/card_number"
+                        android:id="@+id/textView"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="@dimen/payment_field_margin_left"
+                        android:textSize="18sp"
+                        android:textColor="#000000"
+                        android:layout_marginTop="@dimen/payment_field_margin_top" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:ems="10"
+                        android:id="@+id/cardNumber"
+                        android:layout_below="@+id/textView"
+                        android:layout_alignStart="@+id/textView"
+                        android:layout_marginEnd="@dimen/payment_field_margin_left"
+                        android:layout_marginTop="@dimen/payment_field_margin_top"
+                        android:hint="@string/_0000_0000_0000_0000"
+                        android:textSize="18sp"
+                        android:background="@drawable/green_border"
+                        android:padding="@dimen/payment_field_padding" />
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cardNumber"
+                        android:layout_alignStart="@+id/cardNumber"
+                        android:layout_marginEnd="@dimen/payment_field_margin_left"
+                        android:layout_marginTop="@dimen/payment_field_margin_top_lg"
+                        android:id="@+id/tableLayout"
+                        android:layout_marginBottom="@dimen/payment_field_margin_top">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/expires"
+                                android:id="@+id/textView2"
+                                android:textSize="18sp"
+                                android:textColor="#000000"
+                                android:layout_column="0"
+                                android:layout_columnWeight="1"
+                                android:layout_rowWeight="1"
+                                android:layout_row="0"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/cvc"
+                                android:id="@+id/textView3"
+                                android:textSize="18sp"
+                                android:textColor="#000000"
+                                android:layout_column="1"
+                                android:layout_columnWeight="1"
+                                android:layout_rowWeight="1"
+                                android:layout_row="0"
+                                android:layout_weight="1"
+                                android:layout_marginLeft="@dimen/payment_field_margin_left_sm" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:ems="10"
+                                android:id="@+id/expiry"
+                                android:layout_below="@+id/gridLayout"
+                                android:layout_alignStart="@+id/gridLayout"
+                                android:layout_column="0"
+                                android:layout_columnWeight="1"
+                                android:layout_rowWeight="1"
+                                android:layout_row="1"
+                                android:layout_weight="1"
+                                android:padding="@dimen/payment_field_padding"
+                                android:background="@drawable/green_border"
+                                android:layout_marginTop="@dimen/payment_field_margin_top"
+                                android:hint="MMYY" />
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:ems="10"
+                                android:id="@+id/cvc"
+                                android:layout_below="@+id/gridLayout"
+                                android:layout_alignStart="@+id/gridLayout"
+                                android:layout_column="1"
+                                android:layout_columnWeight="1"
+                                android:layout_rowWeight="1"
+                                android:layout_row="1"
+                                android:layout_weight="1"
+                                android:layout_marginLeft="@dimen/payment_field_margin_left_sm"
+                                android:padding="@dimen/payment_field_padding"
+                                android:background="@drawable/green_border"
+                                android:layout_marginTop="@dimen/payment_field_margin_top"
+                                android:hint="***" />
+                        </TableRow>
+
+                    </TableLayout>
+
+                    <Button
+                        android:layout_width="@dimen/card_scan_icon_size"
+                        android:layout_height="@dimen/card_scan_icon_size"
+                        android:id="@+id/button4"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:onClick="onScanPress"
+                        android:background="@drawable/card_scan_icon"
+                        android:layout_marginTop="@dimen/payment_field_margin_top"
+                        android:layout_marginEnd="@dimen/payment_field_margin_left" />
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/amount_to_charge_label"
+                android:id="@+id/textView4"
+                android:layout_marginStart="@dimen/payment_field_margin_left_sm"
+                android:layout_marginEnd="@dimen/payment_field_margin_left_sm"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/charge_label"
+                android:id="@+id/chargeLabel"
+                android:layout_marginStart="@dimen/payment_field_margin_left"
+                android:layout_marginEnd="@dimen/payment_field_margin_left_sm"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/credit_card_demo_app"
+                android:id="@+id/textView6"
+                android:layout_marginTop="@dimen/text_margin"
+                android:textColor="#000000" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cancel"
+                    android:id="@+id/button3"
+                    android:layout_marginStart="@dimen/payment_field_margin_left"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:onClick="backPressed"
+                    android:layout_marginTop="@dimen/text_margin"
+                    android:layout_marginBottom="@dimen/ticketing_field_margin_top" />
+
+                <View android:layout_height="1dp"
+                      android:layout_width="0dp"
+                      android:layout_weight="1"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/purchase"
+                    android:id="@+id/button2"
+                    android:layout_marginEnd="@dimen/payment_field_margin_left"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:backgroundTint="@color/md_blue_500"
+                    android:onClick="buyClicked"
+                    android:layout_marginTop="@dimen/text_margin"
+                    android:layout_marginBottom="@dimen/ticketing_field_margin_top" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</FrameLayout>

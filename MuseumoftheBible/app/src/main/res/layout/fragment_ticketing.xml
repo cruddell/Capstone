@@ -1,0 +1,72 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Ticketing.TicketingFragment"
+    >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:background="@color/md_orange_50"
+        android:alpha=".75"
+        android:id="@+id/backgroundView"></FrameLayout>
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/nameField"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/ticketing_field_margin_top"
+        android:hint="Name" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/emailField"
+        android:layout_below="@+id/nameField"
+        android:layout_alignStart="@+id/nameField"
+        android:layout_marginTop="@dimen/ticketing_field_margin_top"
+        android:hint="Email Address" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/phoneField"
+        android:layout_below="@+id/emailField"
+        android:layout_alignStart="@+id/emailField"
+        android:layout_marginTop="@dimen/ticketing_field_margin_top"
+        android:hint="Phone Number" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+        android:id="@+id/button"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:onClick="continuePressed"
+        android:backgroundTint="@color/md_blue_500"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/ticketing_field_margin_top" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/numberTicketsField"
+        android:layout_below="@+id/phoneField"
+        android:layout_alignStart="@+id/phoneField"
+        android:layout_marginTop="@dimen/ticketing_field_margin_top"
+        android:hint="Number of Tickets" />
+</RelativeLayout>
