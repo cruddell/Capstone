@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ruddell.museumofthebible.MapFragment">
+    tools:context="com.ruddell.museumofthebible.Map.MapFragment">
 
     <com.google.android.gms.maps.SupportMapFragment
         android:layout_width="match_parent"

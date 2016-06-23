@@ -1,11 +1,10 @@
-package com.ruddell.museumofthebible;
+package com.ruddell.museumofthebible.Help;
 
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebView;
 
-import com.google.android.gms.maps.MapView;
+import com.ruddell.museumofthebible.R;
 
 public class HelpActivity extends Activity {
     private static final String TAG = "HelpActivity";

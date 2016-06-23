@@ -1,4 +1,4 @@
-package com.ruddell.museumofthebible;
+package com.ruddell.museumofthebible.Home;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -13,7 +13,9 @@ import com.ruddell.museumofthebible.Bible.BibleActivity;
 import com.ruddell.museumofthebible.Database.BibleDatabase;
 import com.ruddell.museumofthebible.Database.BibleDatabaseCopier;
 import com.ruddell.museumofthebible.Exhibits.ExhibitActivity;
-import com.ruddell.museumofthebible.Exhibits.ExhibitDetailActivity;
+import com.ruddell.museumofthebible.Help.HelpActivity;
+import com.ruddell.museumofthebible.Map.MapActivity;
+import com.ruddell.museumofthebible.R;
 import com.ruddell.museumofthebible.Ticketing.TicketActivity;
 import com.ruddell.museumofthebible.views.AnimatedImageButton;
 

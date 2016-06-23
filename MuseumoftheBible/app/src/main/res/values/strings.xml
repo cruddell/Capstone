@@ -19,5 +19,10 @@
     <string name="cvc">CVC:</string>
     <string name="card_number">Card Number:</string>
     <string name="_0000_0000_0000_0000">0000 0000 0000 0000</string>
+    <string name="ticketing_helperText_name">Name</string>
+    <string name="ticketing_helperText_emailAddress">Email Address</string>
+    <string name="ticketing_helperText_phoneNumber">Phone Number</string>
+    <string name="ticketing_buttonText_continue">Continue</string>
+    <string name="ticketing_helperText_numberTickets">Number of Tickets</string>
 
 </resources>
