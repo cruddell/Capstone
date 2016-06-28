@@ -1,23 +1,22 @@
 package com.ruddell.museumofthebible.Bible;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
+import android.support.v13.app.FragmentPagerAdapter;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
-
 import com.ruddell.museumofthebible.Database.BibleDatabase;
 import com.ruddell.museumofthebible.Database.BibleDatabaseCopier;
 import com.ruddell.museumofthebible.R;
 import com.ruddell.museumofthebible.views.CustomViewPager;
 
-public class BibleActivity extends Activity implements BibleBooksFragment.OnListFragmentInteractionListener, BibleChapterFragment.OnListFragmentInteractionListener {
+public class BibleActivity extends AppCompatActivity implements BibleBooksFragment.OnListFragmentInteractionListener, BibleChapterFragment.OnListFragmentInteractionListener {
     private static final String TAG = "BibleActivity";
     private static final boolean DEBUG = true;
     private CustomViewPager mViewpager;

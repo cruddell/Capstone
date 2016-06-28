@@ -1,19 +1,38 @@
 package com.ruddell.museumofthebible.Exhibits;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.ruddell.museumofthebible.Exhibits.model.Exhibit;
 import com.ruddell.museumofthebible.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by chris on 2/28/16.
  */
 public class ExhibitAdapter extends RecyclerView.Adapter<ExhibitAdapter.ViewHolder> {
+    private static final String TAG = "ExhibitAdapter";
+    private static final boolean DEBUG_LOG = true;
+
+    private ArrayList<Exhibit> mExhibits;
+
+    public void setExhibits(ArrayList<Exhibit> exhibits) {
+//        mExhibits = exhibits;
+        if (DEBUG_LOG) {
+            Log.d(TAG, "setExhibits");
+            for (int i=0; i<exhibits.size(); i++) {
+                Log.d(TAG, "exhibit found:" + exhibits.get(i).toString());
+            }
+        }
+
+    }
+
     /**
      * Called when RecyclerView needs a new {@link ViewHolder} of the given type to represent
      * an item.
@@ -104,7 +123,7 @@ public class ExhibitAdapter extends RecyclerView.Adapter<ExhibitAdapter.ViewHold
      */
     @Override
     public int getItemCount() {
-        return 0;
+        return mExhibits.size();
     }
 
 
@@ -123,4 +142,7 @@ public class ExhibitAdapter extends RecyclerView.Adapter<ExhibitAdapter.ViewHold
             return super.toString() + " '" + mBookNameLabel.getText() + "'";
         }
     }
+
+
+
 }

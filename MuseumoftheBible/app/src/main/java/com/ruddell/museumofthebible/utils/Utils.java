@@ -1,6 +1,8 @@
 package com.ruddell.museumofthebible.utils;
 
 import android.app.Activity;
+import android.content.Context;
+import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -17,6 +19,11 @@ public class Utils {
             imm.hideSoftInputFromWindow(currentFocus.getWindowToken(), 0);
         }
         context.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+    }
+
+    public static void runOnUiThread(Context context, Runnable runnable) {
+        Handler mainHandler = new Handler(context.getApplicationContext().getMainLooper());
+        mainHandler.post(runnable);
     }
 
 }

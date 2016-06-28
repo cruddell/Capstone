@@ -1,12 +1,12 @@
 package com.ruddell.museumofthebible.Help;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 
 import com.ruddell.museumofthebible.R;
 
-public class HelpActivity extends Activity {
+public class HelpActivity extends AppCompatActivity {
     private static final String TAG = "HelpActivity";
     private WebView mWebView;
 

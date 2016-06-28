@@ -13,10 +13,16 @@ import com.ruddell.museumofthebible.R;
  * A simple {@link Fragment} subclass.
  */
 public class ExhibitDetailFragment extends Fragment {
-
+    private int mPageNumber = 0;
 
     public ExhibitDetailFragment() {
         // Required empty public constructor
+    }
+
+    public static ExhibitDetailFragment newInstance(int pageNumber) {
+        ExhibitDetailFragment fragment = new ExhibitDetailFragment();
+        fragment.mPageNumber = pageNumber;
+        return fragment;
     }
 
 
@@ -24,7 +30,10 @@ public class ExhibitDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_exhibit_detail, container, false);
+        View view = inflater.inflate(R.layout.fragment_exhibit_detail, container, false);
+
+
+        return view;
     }
 
 }

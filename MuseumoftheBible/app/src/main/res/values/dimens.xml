@@ -22,7 +22,8 @@
     <dimen name="card_scan_icon_size">35dp</dimen>
     <dimen name="ticket_qrcode_size">200dp</dimen>
 
-    <dimen name="gallery_image_fragment_viewpager_page_margin">-100dp</dimen>
+    <dimen name="gallery_image_fragment_viewpager_page_margin">20dp</dimen>
     <dimen name="gallery_image_fragment_viewpager_content_margin">50dp</dimen>
     <dimen name="gallery_image_fragment_viewpager_content_marginTop">20dp</dimen>
+    <dimen name="exhibit_fragment_height">300dp</dimen>
 </resources>
