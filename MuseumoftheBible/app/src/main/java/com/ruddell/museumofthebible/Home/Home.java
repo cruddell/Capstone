@@ -9,17 +9,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 
+import com.ruddell.museumofthebible.Api.ApiHelper;
 import com.ruddell.museumofthebible.Bible.BibleActivity;
 import com.ruddell.museumofthebible.Database.BibleDatabase;
 import com.ruddell.museumofthebible.Database.BibleDatabaseCopier;
 import com.ruddell.museumofthebible.Exhibits.ExhibitActivity;
+import com.ruddell.museumofthebible.Exhibits.model.Exhibit;
 import com.ruddell.museumofthebible.Help.HelpActivity;
 import com.ruddell.museumofthebible.Map.MapActivity;
 import com.ruddell.museumofthebible.R;
 import com.ruddell.museumofthebible.Ticketing.TicketActivity;
+import com.ruddell.museumofthebible.utils.PrefUtils;
 import com.ruddell.museumofthebible.views.AnimatedImageButton;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.util.ArrayList;
 
 public class Home extends AppCompatActivity {
     private static final String TAG = "Home";
@@ -31,6 +40,7 @@ public class Home extends AppCompatActivity {
         //perform data bootstrap if needed
 //        DatabaseUpdater.updateDatabaseIfNeeded(this);
 
+        getExhibits();
         setContentView(R.layout.activity_home);
 
 
@@ -154,4 +164,39 @@ public class Home extends AppCompatActivity {
         }
 
     }
+
+
+    //download featured exhibit data in background so it will be ready when the user taps on the button
+    private void getExhibits() {
+        ApiHelper.getExhibits(new ApiHelper.NetworkCallback() {
+            @Override
+            public void onResponseReceived(final ApiHelper.HttpResponse response) {
+
+                if (response.responseCode == HttpURLConnection.HTTP_OK) {
+                    ArrayList<Exhibit> exhibits = new ArrayList<>();
+                    try {
+                        PrefUtils.setFeaturedExhibits(Home.this, response.responseBody);
+                        JSONArray jsonArray = new JSONArray(response.responseBody);
+                        for (int i=0; i<jsonArray.length(); i++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            int id = jsonObject.getInt("ID");
+                            String title = jsonObject.getString("Title");
+                            String audioFile = jsonObject.getString("Audio");
+                            String imageName = jsonObject.getString("Image");
+                            String description = jsonObject.getString("Description");
+                            Exhibit exhibit = new Exhibit(id, title, audioFile, imageName,description);
+                            exhibits.add(exhibit);
+
+                            //save image and audio files
+                            ApiHelper.getAudioFile(audioFile, Home.this);
+                            ApiHelper.getImageFile(imageName, Home.this);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }, this);
+    }
+
 }

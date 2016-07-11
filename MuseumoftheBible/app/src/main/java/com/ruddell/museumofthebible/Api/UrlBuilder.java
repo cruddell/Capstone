@@ -7,7 +7,7 @@ public class UrlBuilder {
     private static final boolean DEBUG_LOG = true;
     private static final String TAG = "UrlBuilder";
 
-    private static final String BASE_URL_DEV = "http://churchphoneapps.com/udacity/";
+    private static final String BASE_URL_DEV = "http://192.254.187.228/udacity/";
 
 
     enum HttpMethods {
@@ -22,5 +22,13 @@ public class UrlBuilder {
         return url;
     }
 
+    public static String audioUrl(String filename) {
+        String url = exhibitUrl() + "audio/" + filename;
+        return url;
+    }
 
+    public static String imageUrl(String filename) {
+        String url = exhibitUrl() + "images/" + filename;
+        return url;
+    }
 }

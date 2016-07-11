@@ -83,7 +83,7 @@
             android:id="@+id/button_exhibits"
             android:layout_marginLeft="@dimen/square_button_margin"
             android:layout_marginTop="@dimen/square_button_margin"
-            android:background="@drawable/home_button_red"
+            android:background="@drawable/home_button_blue"
             android:src="@drawable/exhibit"
             android:visibility="invisible"
             android:transitionName="button_exhibits"
@@ -131,7 +131,7 @@
             android:layout_marginLeft="@dimen/square_button_margin"
             android:layout_marginTop="@dimen/square_button_margin"
             android:transitionName="button_help"
-            android:background="@drawable/home_button_blue"
+            android:background="@drawable/home_button_red"
             android:src="@drawable/contact"
             android:visibility="invisible"
             android:onClick="onClick" />

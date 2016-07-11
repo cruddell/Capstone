@@ -1,6 +1,7 @@
 package com.ruddell.museumofthebible.Api;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.ruddell.museumofthebible.utils.Utils;
@@ -8,8 +9,13 @@ import com.ruddell.museumofthebible.utils.Utils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -41,6 +47,46 @@ public class ApiHelper {
                         callback.onResponseReceived(response);
                     }
                 });
+
+            }
+        }).start();
+    }
+
+    public static void getImageFile(@NonNull final String filename, @NonNull final Context context) {
+        if (DEBUG_LOG) Log.d(TAG, "getImageFile:" + filename);
+        if (Utils.fileExists(filename)) {
+            if (DEBUG_LOG) Log.d(TAG, "file already exists");
+            return;
+        }
+        final String url = UrlBuilder.imageUrl(filename);
+        final HttpSendObj sendObj = new HttpSendObj();
+        sendObj.url = url;
+        sendObj.method = UrlBuilder.HttpMethods.GET;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final boolean result = downloadFileToCache(url, filename);
+                if (DEBUG_LOG) Log.d(TAG, "file downloaded and saved:" + result);
+
+            }
+        }).start();
+    }
+
+    public static void getAudioFile(@NonNull final String filename, @NonNull final Context context) {
+        if (DEBUG_LOG) Log.d(TAG, "getAudioFile:" + filename);
+        if (Utils.fileExists(filename)) {
+            if (DEBUG_LOG) Log.d(TAG, "file already exists");
+            return;
+        }
+        final String url = UrlBuilder.audioUrl(filename);
+        final HttpSendObj sendObj = new HttpSendObj();
+        sendObj.url = url;
+        sendObj.method = UrlBuilder.HttpMethods.GET;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final boolean result = downloadFileToCache(url, filename);
+                if (DEBUG_LOG) Log.d(TAG, "file downloaded and saved:" + result);
 
             }
         }).start();
@@ -133,6 +179,67 @@ public class ApiHelper {
 
         if (DEBUG_LOG) Log.d(TAG, "response:" + responseObject.responseBody);
         return responseObject;
+    }
+
+    /**
+     * Downloads the specified file and saves it to the SDCard using the specified filename.
+     * @param fileUrl
+     * @param filename
+     * @return
+     */
+    private static boolean downloadFileToCache(String fileUrl, String filename) {
+        HttpURLConnection urlc;
+        boolean isError = false;
+
+        File directory = Utils.getExternalDirectory();
+        File file = new File(directory, filename);
+
+        try {
+            URL url = new URL(fileUrl);
+            urlc = (HttpURLConnection) url.openConnection();
+            urlc.setRequestMethod(UrlBuilder.HttpMethods.GET.name());
+
+            urlc.setDoOutput(false);
+            urlc.setDoInput(true);
+            urlc.setUseCaches(false);
+
+
+            int status = urlc.getResponseCode();
+
+            if(status >= 300) {
+                isError = true;
+            }
+
+            InputStream input = new BufferedInputStream(url.openStream(), 8192);
+            OutputStream output = new FileOutputStream(file);
+
+            byte data[] = new byte[1024];
+            int count=0;
+            long total = 0;
+            while ((count = input.read(data)) != -1) {
+                total += count;
+                output.write(data, 0, count);
+            }
+
+            output.flush();
+            output.close();
+            input.close();
+
+            Log.d(TAG, "file size:" + total + "(" + file.getPath() + ")");
+
+//            Utils.saveToDevice(data, filename);
+
+            //return response;
+        } catch (java.net.ProtocolException e) {
+            e.printStackTrace();
+            isError = true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            isError = true;
+        } finally {
+
+        }
+        return !isError;
     }
 
     static class HttpSendObj {
