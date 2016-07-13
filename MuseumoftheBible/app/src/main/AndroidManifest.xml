@@ -2,12 +2,11 @@
 <manifest package="com.ruddell.museumofthebible"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        />
-    <uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE"
-        />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <permission android:name="com.ruddell.museumofthebible.permission.C2D_MESSAGE" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.ruddell.museumofthebible.permission.C2D_MESSAGE"/>
 
     <!-- Card.io Permissions: -->
     <!-- Permission to vibrate - recommended, allows vibration feedback on scan -->
@@ -46,6 +45,33 @@
             android:name=".Database.DatabaseService"
             android:exported="false"/>
 
+        <!--Google Cloud Messaging-->
+        <receiver android:name="com.google.android.gms.gcm.GcmReceiver"
+                  android:exported="true"
+                  android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <category android:name="com.ruddell.museumofthebible.gcm"/>
+            </intent-filter>
+        </receiver>
+        <service
+            android:name="com.ruddell.museumofthebible.GoogleCloudMessaging.MyGcmListenerService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.ruddell.museumofthebible.GoogleCloudMessaging.MyInstanceIDListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
+            </intent-filter>
+        </service>
+        <service android:name=".GoogleCloudMessaging.RegistrationIntentService" android:exported="false"/>
+
+        <!--Activities-->
+
         <activity android:name=".Home.Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -69,7 +95,15 @@
             android:name="io.card.payment.CardIOActivity"
             android:configChanges="keyboardHidden|orientation"/>
         <activity android:name="io.card.payment.DataEntryActivity"/>
-        <activity android:name=".Exhibits.ExhibitDetailActivity" android:theme="@style/ExhibitDetailTheme"/>
+        <activity
+            android:name=".Exhibits.ExhibitDetailActivity"
+            android:theme="@style/ExhibitDetailTheme"/>
+        <activity android:name=".Facebook.FacebookActivity">
+        </activity>
+        <activity
+            android:name=".Settings.SettingsActivity"
+            android:label="@string/title_activity_settings">
+        </activity>
     </application>
 
 </manifest>

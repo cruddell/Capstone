@@ -18,6 +18,8 @@ public class PrefUtils {
     public static final String PREF_DATA_BOOTSTRAP_COMPLETE = "pref_data_bootstrap_complete";
     public static final String PREF_TICKET_AVAILABLE = "pref_ticket_available";
     public static final String PREF_FEATURED_EXHIBITS = "pref_featured_exhibits";
+    public static final String PREF_VERSE_OF_THE_DAY = "pref_verseOfTheDay";
+    public static final String PREF_SENT_TOKEN_TO_SERVER = "pref_sent_token_to_server";
 
     public static boolean isDataBootstrapDone(final Context context) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
@@ -26,12 +28,12 @@ public class PrefUtils {
 
     public static void setDataBootstrapComplete(final Context context, boolean isComplete) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-        sp.edit().putBoolean(PREF_DATA_BOOTSTRAP_COMPLETE, isComplete).commit();
+        sp.edit().putBoolean(PREF_DATA_BOOTSTRAP_COMPLETE, isComplete).apply();
     }
 
     public static void setTicketAvailable(final Context context, boolean isAvailable) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-        sp.edit().putBoolean(PREF_TICKET_AVAILABLE, isAvailable).commit();
+        sp.edit().putBoolean(PREF_TICKET_AVAILABLE, isAvailable).apply();
     }
 
     public static boolean isTicketAvailable(final Context context) {
@@ -41,7 +43,27 @@ public class PrefUtils {
 
     public static void setFeaturedExhibits(final Context context, String exhibitJsonArray) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-        sp.edit().putString(PREF_FEATURED_EXHIBITS, exhibitJsonArray).commit();
+        sp.edit().putString(PREF_FEATURED_EXHIBITS, exhibitJsonArray).apply();
+    }
+
+    public static boolean getPrefVerseOfTheDay(final Context context) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        return sp.getBoolean(PREF_VERSE_OF_THE_DAY, false);
+    }
+
+    public static void setPrefVerseOfTheDay(final Context context, boolean value) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        sp.edit().putBoolean(PREF_VERSE_OF_THE_DAY, value).apply();
+    }
+
+    public static boolean getPrefSentTokenToServer(final Context context) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        return sp.getBoolean(PREF_SENT_TOKEN_TO_SERVER, false);
+    }
+
+    public static void setPrefSentTokenToServer(final Context context, boolean value) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        sp.edit().putBoolean(PREF_SENT_TOKEN_TO_SERVER, value).apply();
     }
 
     public static JSONArray getFeaturedExhibits(final Context context) {

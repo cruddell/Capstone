@@ -127,12 +127,13 @@
         <com.ruddell.museumofthebible.views.AnimatedImageButton
             android:layout_width="@dimen/square_button_two_col"
             android:layout_height="@dimen/square_button_two_col"
-            android:id="@+id/button_help"
+            android:id="@+id/button_facebook"
             android:layout_marginLeft="@dimen/square_button_margin"
             android:layout_marginTop="@dimen/square_button_margin"
-            android:transitionName="button_help"
+            android:transitionName="button_facebook"
             android:background="@drawable/home_button_red"
-            android:src="@drawable/contact"
+            android:src="@drawable/facebook"
+            android:tint="@color/md_white_1000"
             android:visibility="invisible"
             android:onClick="onClick" />
 

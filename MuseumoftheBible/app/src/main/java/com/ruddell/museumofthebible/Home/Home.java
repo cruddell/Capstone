@@ -3,21 +3,29 @@ package com.ruddell.museumofthebible.Home;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.ActivityOptions;
+import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.ruddell.museumofthebible.Api.ApiHelper;
 import com.ruddell.museumofthebible.Bible.BibleActivity;
 import com.ruddell.museumofthebible.Database.BibleDatabase;
 import com.ruddell.museumofthebible.Database.BibleDatabaseCopier;
 import com.ruddell.museumofthebible.Exhibits.ExhibitActivity;
 import com.ruddell.museumofthebible.Exhibits.model.Exhibit;
-import com.ruddell.museumofthebible.Help.HelpActivity;
+import com.ruddell.museumofthebible.Facebook.FacebookActivity;
+import com.ruddell.museumofthebible.GoogleCloudMessaging.RegistrationIntentService;
 import com.ruddell.museumofthebible.Map.MapActivity;
 import com.ruddell.museumofthebible.R;
+import com.ruddell.museumofthebible.Settings.SettingsActivity;
 import com.ruddell.museumofthebible.Ticketing.TicketActivity;
 import com.ruddell.museumofthebible.utils.PrefUtils;
 import com.ruddell.museumofthebible.views.AnimatedImageButton;
@@ -32,7 +40,12 @@ import java.util.ArrayList;
 
 public class Home extends AppCompatActivity {
     private static final String TAG = "Home";
+    private static final boolean DEBUG_LOG = true;
+
     private boolean mDidInit = false;
+    private boolean isReceiverRegistered;
+    private BroadcastReceiver mRegistrationBroadcastReceiver;
+    private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +74,13 @@ public class Home extends AppCompatActivity {
             throw new Error("Unable to create database");
 
         }
+
+        //get token
+        if (checkPlayServices()) {
+            if (DEBUG_LOG) Log.d(TAG, "device has Google Play Services - attempting to retrieve GCM token");
+            startService(new Intent(this, RegistrationIntentService.class));
+        }
+
     }
 
     @Override
@@ -74,11 +94,20 @@ public class Home extends AppCompatActivity {
             randomDelayReveal(findViewById(R.id.button_tickets));
             randomDelayReveal(findViewById(R.id.button_exhibits));
             randomDelayReveal(findViewById(R.id.button_map));
-            randomDelayReveal(findViewById(R.id.button_help));
+            randomDelayReveal(findViewById(R.id.button_facebook));
             randomDelayReveal(findViewById(R.id.button_settings));
             mDidInit = true;
         }
 
+        registerReceiver();
+
+    }
+
+    @Override
+    protected void onPause() {
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);
+        isReceiverRegistered = false;
+        super.onPause();
     }
 
     private void randomDelayReveal(final View myView) {
@@ -148,13 +177,17 @@ public class Home extends AppCompatActivity {
             intent = new Intent(Home.this, MapActivity.class);
             options = ActivityOptions.makeSceneTransitionAnimation(this, button, "button_map");
         }
-        else if (button==findViewById(R.id.button_help)) {
-            intent = new Intent(Home.this, HelpActivity.class);
-            options = ActivityOptions.makeSceneTransitionAnimation(this, button, "button_help");
+        else if (button==findViewById(R.id.button_facebook)) {
+            intent = new Intent(Home.this, FacebookActivity.class);
+            options = ActivityOptions.makeSceneTransitionAnimation(this, button, "button_facebook");
         }
         else if (button==findViewById(R.id.button_bible)) {
             intent = new Intent(Home.this, BibleActivity.class);
             options = ActivityOptions.makeSceneTransitionAnimation(this, button, "button_bible");
+        }
+        else if (button==findViewById(R.id.button_settings)) {
+            intent = new Intent(Home.this, SettingsActivity.class);
+            options = ActivityOptions.makeSceneTransitionAnimation(this, button, "button_settings");
         }
 
         if (intent!=null)
@@ -197,6 +230,38 @@ public class Home extends AppCompatActivity {
                 }
             }
         }, this);
+    }
+
+
+    public static final String REGISTRATION_COMPLETE = "registration_complete";
+    private void registerReceiver(){
+        if(!isReceiverRegistered) {
+            if (DEBUG_LOG) Log.d(TAG, "registerReceiver");
+            LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
+                    new IntentFilter(REGISTRATION_COMPLETE));
+            isReceiverRegistered = true;
+        }
+    }
+    /**
+     * Check the device to make sure it has the Google Play Services APK. If
+     * it doesn't, display a dialog that allows users to download the APK from
+     * the Google Play Store or enable it in the device's system settings.
+     */
+    private boolean checkPlayServices() {
+        if (DEBUG_LOG) Log.d(TAG,"checkPlayServices");
+        GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
+        int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (apiAvailability.isUserResolvableError(resultCode)) {
+                apiAvailability.getErrorDialog(this, resultCode, PLAY_SERVICES_RESOLUTION_REQUEST)
+                        .show();
+            } else {
+                Log.i(TAG, "This device is not supported.");
+                finish();
+            }
+            return false;
+        }
+        return true;
     }
 
 }
