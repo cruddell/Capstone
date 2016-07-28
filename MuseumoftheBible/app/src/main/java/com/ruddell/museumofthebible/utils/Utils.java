@@ -102,7 +102,10 @@ public class Utils {
         File directory = new File(Environment.getExternalStorageDirectory(), DIRECTORY_MOTB);
 
         if (!directory.exists())
-            directory.mkdirs();
+        {
+            boolean directoryCreated = directory.mkdirs();
+            if (!directoryCreated) Log.e(TAG, "DIRECTORY " + directory + " COULD NOT BE CREATED!");
+        }
 
         return directory;
     }

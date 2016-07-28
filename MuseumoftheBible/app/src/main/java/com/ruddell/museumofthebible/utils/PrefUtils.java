@@ -11,6 +11,8 @@ import android.preference.PreferenceManager;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.util.UUID;
+
 public class PrefUtils {
     private static final String TAG = "PrefUtils";
 
@@ -20,6 +22,7 @@ public class PrefUtils {
     public static final String PREF_FEATURED_EXHIBITS = "pref_featured_exhibits";
     public static final String PREF_VERSE_OF_THE_DAY = "pref_verseOfTheDay";
     public static final String PREF_SENT_TOKEN_TO_SERVER = "pref_sent_token_to_server";
+    public static final String PREF_DEVICE_ID = "pref_deviceId";
 
     public static boolean isDataBootstrapDone(final Context context) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
@@ -64,6 +67,23 @@ public class PrefUtils {
     public static void setPrefSentTokenToServer(final Context context, boolean value) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         sp.edit().putBoolean(PREF_SENT_TOKEN_TO_SERVER, value).apply();
+    }
+
+    public static String getPrefDeviceId(final Context context) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        String deviceId = sp.getString(PREF_DEVICE_ID, "");
+        if (deviceId.length()<1) {
+            //need new device Id
+            deviceId = UUID.randomUUID().toString();
+            setPrefDeviceId(context, deviceId);
+        }
+
+        return deviceId;
+    }
+
+    public static void setPrefDeviceId(final Context context, String value) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        sp.edit().putString(PREF_DEVICE_ID, value);
     }
 
     public static JSONArray getFeaturedExhibits(final Context context) {

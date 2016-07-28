@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "106615646475",
+    "project_id": "digital-method-93613"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106615646475:android:b4270bc0b02af010",
+        "android_client_info": {
+          "package_name": "com.ruddell.museumofthebible"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_rwigev7ppNuirOzOzeaBWav8zMfM-Ww"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,9 +4,11 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.ruddell.museumofthebible.utils.PrefUtils;
 import com.ruddell.museumofthebible.utils.Utils;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
@@ -92,6 +94,33 @@ public class ApiHelper {
         }).start();
     }
 
+    public static void registerGcmToken(final String gcmToken, final String channel, final Context context) {
+        if (DEBUG_LOG) Log.d(TAG, "registerGcmToken");
+        //register the gcm token with the server
+        //perform in background thread
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final String url = UrlBuilder.registerGcmTokenUrl();
+                final HttpSendObj sendObj = new HttpSendObj();
+                sendObj.url = url;
+                sendObj.method = UrlBuilder.HttpMethods.POST;
+
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("deviceId", PrefUtils.getPrefDeviceId(context));
+                    jsonObject.put("channel", channel);
+                    jsonObject.put("application", context.getPackageName());
+                    jsonObject.put("token", gcmToken);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                sendObj.jsonObject = jsonObject;
+                HttpResponse response = performApiRequest(sendObj);
+                if (DEBUG_LOG) Log.d(TAG, "registerGcmToken response:" + response.toString());
+            }
+        }).start();
+    }
 
     /**
      * Make HTTP request
@@ -175,6 +204,7 @@ public class ApiHelper {
             }
         }
 
+        responseObject.url = httpSendObj.url;
         responseObject.responseBody = (responseObject.responseBody!=null && responseObject.responseBody.length()>0) ? responseObject.responseBody : httpSendObj.url.length()<1 ? "Error:missing url" : "Error: (" + responseObject.responseCode + "):" + responseObject.responseBody;
 
         if (DEBUG_LOG) Log.d(TAG, "response:" + responseObject.responseBody);
@@ -225,7 +255,7 @@ public class ApiHelper {
             output.close();
             input.close();
 
-            Log.d(TAG, "file size:" + total + "(" + file.getPath() + ")");
+            if (DEBUG_LOG) Log.d(TAG, "file size:" + total + "(" + file.getPath() + ")");
 
 //            Utils.saveToDevice(data, filename);
 
@@ -265,9 +295,21 @@ public class ApiHelper {
     public static class HttpResponse {
         public String responseBody;
         public int responseCode;
+        public String url;
+
+        @Override
+        public String toString() {
+            return "HttpResponse{" +
+                    "responseBody='" + responseBody + '\'' +
+                    ", responseCode=" + responseCode +
+                    ", url='" + url + '\'' +
+                    '}';
+        }
     }
 
     public interface NetworkCallback {
         void onResponseReceived(HttpResponse response);
     }
+
+
 }

@@ -21,6 +21,7 @@ import android.util.Log;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
+import com.ruddell.museumofthebible.Api.ApiHelper;
 import com.ruddell.museumofthebible.R;
 import com.ruddell.museumofthebible.utils.PrefUtils;
 
@@ -78,8 +79,8 @@ public class RegistrationIntentService extends IntentService {
      * @param token The new token.
      */
     private void sendRegistrationToServer(String token) {
-        // TODO: Implement this method to send any registration to your app's servers.
-        // Add custom implementation, as needed.
+        if (DEBUG_LOG) Log.d(TAG, "sendRegistrationToServer");
+        ApiHelper.registerGcmToken(token, Channel.CHANNEL_VERSE_OF_THE_DAY, this.getApplicationContext());
     }
 
 

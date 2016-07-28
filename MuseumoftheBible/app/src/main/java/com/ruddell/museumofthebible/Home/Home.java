@@ -1,12 +1,18 @@
 package com.ruddell.museumofthebible.Home;
 
+import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.ActivityOptions;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -46,6 +52,7 @@ public class Home extends AppCompatActivity {
     private boolean isReceiverRegistered;
     private BroadcastReceiver mRegistrationBroadcastReceiver;
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
+    private static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +63,35 @@ public class Home extends AppCompatActivity {
         getExhibits();
         setContentView(R.layout.activity_home);
 
+        //get permissions
+        int checkPermissionWriteExternalStorage = ContextCompat.checkSelfPermission(Home.this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (checkPermissionWriteExternalStorage== PackageManager.PERMISSION_GRANTED) {
+            getExhibits();
+        }
+        else {
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(Home.this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+
+                // Show an expanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+                Snackbar.make(findViewById(R.id.imageView), "Permission is needed to save data to your device so we can display the featured exhibits.", Snackbar.LENGTH_LONG).show();
+
+            } else {
+
+                // No explanation needed, we can request the permission.
+
+                ActivityCompat.requestPermissions(Home.this,
+                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
+
+                // MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        }
 
         BibleDatabase myDbHelper = new BibleDatabase(this);
 
@@ -80,6 +116,7 @@ public class Home extends AppCompatActivity {
             if (DEBUG_LOG) Log.d(TAG, "device has Google Play Services - attempting to retrieve GCM token");
             startService(new Intent(this, RegistrationIntentService.class));
         }
+
 
     }
 
@@ -264,4 +301,26 @@ public class Home extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onRequestPermissionsResult(final int requestCode, @NonNull final String[] permissions, @NonNull final int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay!
+                    getExhibits();
+
+                } else {
+
+                    // permission denied, boo!
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
+    }
 }
