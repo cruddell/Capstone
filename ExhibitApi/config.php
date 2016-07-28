@@ -19,7 +19,9 @@ define("UDACITY_APP_ID", "com.ruddell.museumofthebible");
 define("GCM_API_KEY_BROWSER", "AIzaSyD2Vlj2FYItdO53HIgEgmYmAx_W3hcpSBY");
 define("GCM_API_KEY_SERVER", "AIzaSyC0SaEAH2MaPxsaSb3g146QrvtWZtVwmhc");
 define("GCM_API_KEY_ANDROID", "AIzaSyCZKMTP83pwkipu3u2xbE_TAB0Fw6PtQRM");
-define("GCM_API_KEY",GCM_API_KEY_SERVER);
+define("FIREBASE_API_KEY_SERVER", "AIzaSyBz7eDj1q-H20mu7PCbdzoV3R5C53EsOz0");
+define("FIREBASE_SENDER_ID","507238218645");
+define("GCM_API_KEY",FIREBASE_API_KEY_SERVER);
 define("APP_ERROR_REPORTING", "1");
 
 //turn error warning on / off...

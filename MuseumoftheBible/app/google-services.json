@@ -1,20 +1,27 @@
 {
   "project_info": {
-    "project_number": "106615646475",
-    "project_id": "digital-method-93613"
+    "project_number": "507238218645",
+    "firebase_url": "https://udacity-nanodegree-capstone.firebaseio.com",
+    "project_id": "udacity-nanodegree-capstone",
+    "storage_bucket": "udacity-nanodegree-capstone.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:106615646475:android:b4270bc0b02af010",
+        "mobilesdk_app_id": "1:507238218645:android:b4270bc0b02af010",
         "android_client_info": {
           "package_name": "com.ruddell.museumofthebible"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "507238218645-9qr1g0o17lt8noah3obk59vp6dpa6d0c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyC_rwigev7ppNuirOzOzeaBWav8zMfM-Ww"
+          "current_key": "AIzaSyBeQJr-zicTc1Guku366TXLIjNZWRrdXwQ"
         }
       ],
       "services": {
@@ -26,7 +33,7 @@
           "other_platform_oauth_client": []
         },
         "ads_service": {
-          "status": 1
+          "status": 2
         }
       }
     }

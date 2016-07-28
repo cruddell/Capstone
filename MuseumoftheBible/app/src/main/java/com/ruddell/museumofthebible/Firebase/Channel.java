@@ -1,4 +1,4 @@
-package com.ruddell.museumofthebible.GoogleCloudMessaging;
+package com.ruddell.museumofthebible.Firebase;
 
 /**
  * Created by ChristopherRuddell, Museum of the Bible, on 7/22/16.

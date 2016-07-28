@@ -21,6 +21,7 @@ import android.view.ViewAnimationUtils;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.ruddell.museumofthebible.Api.ApiHelper;
 import com.ruddell.museumofthebible.Bible.BibleActivity;
 import com.ruddell.museumofthebible.Database.BibleDatabase;
@@ -28,7 +29,6 @@ import com.ruddell.museumofthebible.Database.BibleDatabaseCopier;
 import com.ruddell.museumofthebible.Exhibits.ExhibitActivity;
 import com.ruddell.museumofthebible.Exhibits.model.Exhibit;
 import com.ruddell.museumofthebible.Facebook.FacebookActivity;
-import com.ruddell.museumofthebible.GoogleCloudMessaging.RegistrationIntentService;
 import com.ruddell.museumofthebible.Map.MapActivity;
 import com.ruddell.museumofthebible.R;
 import com.ruddell.museumofthebible.Settings.SettingsActivity;
@@ -113,8 +113,9 @@ public class Home extends AppCompatActivity {
 
         //get token
         if (checkPlayServices()) {
-            if (DEBUG_LOG) Log.d(TAG, "device has Google Play Services - attempting to retrieve GCM token");
-            startService(new Intent(this, RegistrationIntentService.class));
+            if (DEBUG_LOG) Log.d(TAG, "device has Google Play Services - attempting to retrieve Firebase token");
+//            startService(new Intent(this, MyFirebaseInstanceIDService.class));
+            Log.d(TAG, "InstanceID token: " + FirebaseInstanceId.getInstance().getToken());
         }
 
 

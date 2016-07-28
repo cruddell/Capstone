@@ -24,6 +24,47 @@ require_once("../config.php");
 	$bolPassed = true;
 
 
+    /////////////////////////////////////////////////////////////////////////
+    //Send Firebase Notification Message...
+    function fnSendFirebaseNotification($registration_ids, $message) {
+        $url = "https://fcm.googleapis.com/fcm/send";
+        $data = ["message"=>$message];
+
+        //fields to send with cURL POST...
+        $fields = array(
+            "registration_ids" => $registration_ids,
+            "data" => $data,
+        );
+
+        //headers to send with cURL POST...
+        $headers = array(
+            "Authorization: key=" . GCM_API_KEY,
+            "Content-Type: application/json"
+        );
+
+        //configure cURL connection...
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
+
+        //POST...
+        $result = curl_exec($ch);
+        if($result === FALSE){
+            $ret = curl_error($ch);
+        }else{
+            $ret = $result;
+        }
+
+        //close cURL...
+        curl_close($ch);
+
+        //return...
+        return $ret;
+    }
 
 	/////////////////////////////////////////////////////////////////////////
 	//Send Google Cloud Messaging message...
@@ -179,7 +220,7 @@ require_once("../config.php");
     }
 
     $message = fnGetVerseOfTheDay();
-    $gcmData = fnSendGCMMessage($tokens, $message);
+    $gcmData = fnSendFirebaseNotification($tokens, $message);
 
     fnProcessGCMResults(UDACITY_APP_ID, $gcmData, $tokens);
 
