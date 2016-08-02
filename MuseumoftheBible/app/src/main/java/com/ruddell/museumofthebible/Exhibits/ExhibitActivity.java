@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +18,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.ruddell.museumofthebible.Api.ApiHelper;
+import com.ruddell.museumofthebible.BaseActivity.BaseActivity;
 import com.ruddell.museumofthebible.Exhibits.model.Exhibit;
 import com.ruddell.museumofthebible.R;
 import com.ruddell.museumofthebible.utils.PrefUtils;
@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.Locale;
 
-public class ExhibitActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, MediaPlayerHelper.MediaPlayerHelperListener, SeekBar.OnSeekBarChangeListener, ExhibitDetailFragment.ExhibitCallback {
+public class ExhibitActivity extends BaseActivity implements ViewPager.OnPageChangeListener, MediaPlayerHelper.MediaPlayerHelperListener, SeekBar.OnSeekBarChangeListener, ExhibitDetailFragment.ExhibitCallback {
     private static final String TAG = "ExhibitActivity";
     private static final boolean DEBUG_LOG = true;
     private ExhibitPagerAdapter mAdapter;

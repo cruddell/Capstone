@@ -2,15 +2,14 @@ package com.ruddell.museumofthebible.Exhibits;
 
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
+import com.ruddell.museumofthebible.BaseActivity.BaseActivity;
 import com.ruddell.museumofthebible.R;
 
-public class ExhibitDetailActivity extends AppCompatActivity {
+public class ExhibitDetailActivity extends BaseActivity {
     private boolean mIsFavorited = false;
 
     @Override

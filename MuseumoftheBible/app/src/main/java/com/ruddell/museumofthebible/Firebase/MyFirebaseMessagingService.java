@@ -11,8 +11,12 @@ import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.ruddell.museumofthebible.Firebase.NotificationTypes.VerseOfTheDay;
 import com.ruddell.museumofthebible.Home.Home;
 import com.ruddell.museumofthebible.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by ChristopherRuddell, Museum of the Bible, on 7/28/16.
@@ -45,19 +49,29 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             Log.d(TAG, "Message Notification Body: " + message);
         }
 
-        // Also if you intend on generating your own notifications as a result of a received FCM
-        // message, here is where that should be initiated. See sendNotification method below.
+        try {
+            JSONObject jsonObject = new JSONObject(message);
+            String book = jsonObject.getString("book");
+            int chapter = jsonObject.getInt("chapter");
+            int verse = jsonObject.getInt("verse");
+            String text = jsonObject.getString("text");
 
-        sendNotification(message);
+            VerseOfTheDay verseOfTheDay = new VerseOfTheDay(book, chapter, verse, text);
+            sendNotification(verseOfTheDay);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         // [END_EXCLUDE]
     }
 
     /**
      * Create and show a simple notification containing the received Firebase message.
      *
-     * @param message Firebase message received.
+     * @param verseOfTheDay Firebase message received.
      */
-    private void sendNotification(String message) {
+    private void sendNotification(VerseOfTheDay verseOfTheDay) {
         Intent intent = new Intent(this, Home.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
@@ -67,7 +81,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.bible)
                 .setContentTitle("Verse of the Day")
-                .setContentText(message)
+                .setContentText(verseOfTheDay.getText())
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
@@ -77,4 +91,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
     }
+
+
 }

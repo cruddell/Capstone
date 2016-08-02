@@ -23,21 +23,21 @@ public class MyBibleChapterRecyclerViewAdapter extends RecyclerView.Adapter<MyBi
     private final BibleChapterFragment.OnListFragmentInteractionListener mListener;
 
     //constructor
-    public MyBibleChapterRecyclerViewAdapter(final String bookID, BibleChapterFragment.OnListFragmentInteractionListener listener) {
+    public MyBibleChapterRecyclerViewAdapter(BibleChapterFragment.OnListFragmentInteractionListener listener) {
         mValues = new ArrayList();
         mListener = listener;
 
     }
 
-    public void updateQuery(final String bookID) {
+    public void updateQuery(final int bookID) {
         if (DEBUG) Log.d(TAG,"updateQuery(" + bookID + ")");
-        if (bookID=="") return;
+        if (bookID==0) return;
         mValues.clear();
         new Thread(new Runnable() {
             @Override
             public void run() {
                 BibleProvider provider = new BibleProvider();
-                String[] selectionArgs = {bookID};
+                String[] selectionArgs = {"" + bookID};
                 Cursor cursor = provider.query(BibleContract.Verses.CONTENT_URI,ChapterQuery.PROJECTION,BibleContract.Verses.BOOK + "=?", selectionArgs,"verses." + BibleContract.Verses.Chapter + " ASC");
                 while (cursor.moveToNext()) {
                     String Chapter = cursor.getString(ChapterQuery.COLUMN_CHAPTER);

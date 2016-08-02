@@ -1,12 +1,12 @@
 package com.ruddell.museumofthebible.Facebook;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 
+import com.ruddell.museumofthebible.BaseActivity.BaseActivity;
 import com.ruddell.museumofthebible.R;
 
-public class FacebookActivity extends AppCompatActivity {
+public class FacebookActivity extends BaseActivity {
 
     private static final String TAG = "FacebookActivity";
     private static final boolean DEBUG_LOG = true;

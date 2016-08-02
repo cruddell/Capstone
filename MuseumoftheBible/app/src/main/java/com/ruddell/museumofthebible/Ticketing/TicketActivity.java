@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
+import com.ruddell.museumofthebible.BaseActivity.BaseActivity;
 import com.ruddell.museumofthebible.R;
 import com.ruddell.museumofthebible.utils.PrefUtils;
 import com.ruddell.museumofthebible.utils.Utils;
@@ -16,7 +16,7 @@ import com.ruddell.museumofthebible.utils.Utils;
 import io.card.payment.CardIOActivity;
 import io.card.payment.CreditCard;
 
-public class TicketActivity extends AppCompatActivity {
+public class TicketActivity extends BaseActivity {
 
     private static final String TAG = "TicketActivity";
     private static final boolean DEBUG_LOG = true;

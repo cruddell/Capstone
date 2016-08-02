@@ -14,7 +14,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -23,6 +22,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.ruddell.museumofthebible.Api.ApiHelper;
+import com.ruddell.museumofthebible.BaseActivity.BaseActivity;
 import com.ruddell.museumofthebible.Bible.BibleActivity;
 import com.ruddell.museumofthebible.Database.BibleDatabase;
 import com.ruddell.museumofthebible.Database.BibleDatabaseCopier;
@@ -44,7 +44,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
 
-public class Home extends AppCompatActivity {
+public class Home extends BaseActivity {
     private static final String TAG = "Home";
     private static final boolean DEBUG_LOG = true;
 

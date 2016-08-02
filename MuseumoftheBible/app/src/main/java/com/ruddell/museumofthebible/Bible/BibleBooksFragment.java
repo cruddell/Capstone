@@ -70,6 +70,7 @@ public class BibleBooksFragment extends Fragment {
         }
         refreshData();
 //        mRecyclerView.setAdapter(new MyBibleBooksRecyclerViewAdapter(MyBibleBooksRecyclerViewAdapter.ITEMS, mListener));
+        if (mListener!=null) mListener.onFragmentViewCreated(this);
         return mRecyclerView;
     }
 
@@ -121,7 +122,7 @@ public class BibleBooksFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onListFragmentInteraction(MyBibleBooksRecyclerViewAdapter.BibleBookItem item);
+        void onFragmentViewCreated(Fragment fragment);
     }
 }

@@ -33,7 +33,7 @@ public class BibleChapterFragment extends Fragment {
 
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
-    private String mBookId;
+    private int mBookId;
     private String mBookName;
     private TextView mBookNameLabel;
     private MyBibleChapterRecyclerViewAdapter mAdapter;
@@ -111,7 +111,7 @@ public class BibleChapterFragment extends Fragment {
             } else {
                 mRecyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            mAdapter = new MyBibleChapterRecyclerViewAdapter(mBookId, mListener);
+            mAdapter = new MyBibleChapterRecyclerViewAdapter(mListener);
             mRecyclerView.setAdapter(mAdapter);
             mRecyclerView.addOnItemTouchListener(new SimpleItemTouchListener(getActivity(), new SimpleItemTouchListener.Listener() {
                 @Override
@@ -122,6 +122,7 @@ public class BibleChapterFragment extends Fragment {
                 }
             }));
         }
+        if (mListener!=null) mListener.onFragmentViewCreated(this);
         return viewContainer;
     }
 
@@ -155,12 +156,13 @@ public class BibleChapterFragment extends Fragment {
     public interface OnListFragmentInteractionListener {
         void onListFragmentInteraction(BibleChapterHelper.BibleChapterItem item);
         void onDataUpdated();
+        void onFragmentViewCreated(Fragment fragment);
     }
 
     public void loadTextForChapter(String chapter) {
         if (DEBUG) Log.d(TAG,"loadTextForChapter:" + chapter);
         BibleProvider provider = new BibleProvider();
-        String[] selectionArgs = {mBookId,chapter};
+        String[] selectionArgs = {"" + mBookId,chapter};
         Cursor cursor = provider.query(BibleContract.Verses.CONTENT_URI,BibleContract.Verses.PROJECTION_ALL,"book=? AND chapter=?",selectionArgs,BibleContract.Verses.DEFAULT_SORT);
         String verseText = "";
         while (cursor.moveToNext()) {

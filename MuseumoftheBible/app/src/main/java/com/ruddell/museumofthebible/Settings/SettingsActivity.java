@@ -1,14 +1,14 @@
 package com.ruddell.museumofthebible.Settings;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
+import com.ruddell.museumofthebible.BaseActivity.BaseActivity;
 import com.ruddell.museumofthebible.R;
 import com.ruddell.museumofthebible.utils.PrefUtils;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends BaseActivity {
 
     private static final String TAG = "SettingsActivity";
     private static final boolean DEBUG_LOG = true;

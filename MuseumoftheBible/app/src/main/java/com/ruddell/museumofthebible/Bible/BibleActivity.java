@@ -4,28 +4,32 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import com.ruddell.museumofthebible.BaseActivity.BaseActivity;
 import com.ruddell.museumofthebible.Database.BibleDatabase;
 import com.ruddell.museumofthebible.Database.BibleDatabaseCopier;
 import com.ruddell.museumofthebible.R;
 import com.ruddell.museumofthebible.views.CustomViewPager;
 
-public class BibleActivity extends AppCompatActivity implements BibleBooksFragment.OnListFragmentInteractionListener, BibleChapterFragment.OnListFragmentInteractionListener {
+public class BibleActivity extends BaseActivity implements BibleBooksFragment.OnListFragmentInteractionListener, BibleChapterFragment.OnListFragmentInteractionListener {
     private static final String TAG = "BibleActivity";
     private static final boolean DEBUG = true;
     private CustomViewPager mViewpager;
     private BiblePagerAdapter mAdapter;
     private BibleChapterFragment mBibleChapterFragment;
     private BibleBooksFragment mBibleBooksFragment;
-    private String mSelectedBookId = "";
+    private int mSelectedBookId = 0;
     private BibleChapterHelper.BibleChapterItem mChapterItem = null;
     private TextView mTitleView;
+
+    public static final String ARG_BOOK_TO_LOAD = "book_to_load";
+    public static final String ARG_BOOK_NAME = "book_name";
+    public static final String ARG_CHAPTER_TO_LOAD = "chapter_to_load";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,21 @@ public class BibleActivity extends AppCompatActivity implements BibleBooksFragme
     }
 
     @Override
+    public void onFragmentViewCreated(final Fragment fragment) {
+        if (fragment instanceof BibleChapterFragment) {
+            int bookToLoad = getIntent().getIntExtra(ARG_BOOK_TO_LOAD, 0);
+            int chapterToLoad = getIntent().getIntExtra(ARG_CHAPTER_TO_LOAD, 0);
+            String bookName = getIntent().getStringExtra(ARG_BOOK_NAME);
+            if (chapterToLoad!=0 && bookToLoad!=0) {
+                MyBibleBooksRecyclerViewAdapter.BibleBookItem item = new MyBibleBooksRecyclerViewAdapter.BibleBookItem(bookToLoad, "",bookName);
+                onListFragmentInteraction(item);
+                BibleChapterHelper.BibleChapterItem chapterItem = new BibleChapterHelper.BibleChapterItem("" + chapterToLoad);
+                onListFragmentInteraction(chapterItem);
+            }
+        }
+    }
+
+    @Override
     public void onListFragmentInteraction(BibleChapterHelper.BibleChapterItem item) {
         if (DEBUG) Log.d(TAG,"onListFragmentInteraction(" + item.chapterName + ")");
         mBibleChapterFragment.loadTextForChapter(item.chapterName);
@@ -72,6 +91,10 @@ public class BibleActivity extends AppCompatActivity implements BibleBooksFragme
      */
     @Override
     public void onBackPressed() {
+        int bookToLoad = getIntent().getIntExtra(ARG_BOOK_TO_LOAD, 0);
+        int chapterToLoad = getIntent().getIntExtra(ARG_CHAPTER_TO_LOAD, 0);
+        if (bookToLoad!=0 && chapterToLoad!=0) finish();
+
         if (mBibleChapterFragment!=null && mBibleChapterFragment.bibleTextIsShown()) {
             if (DEBUG) Log.d(TAG, "onBackPressed -- bibleTextIsShown - fading back to chapter list...");
             mBibleChapterFragment.fadeContent(false);

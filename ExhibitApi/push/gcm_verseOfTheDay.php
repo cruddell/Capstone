@@ -195,9 +195,28 @@ require_once("../config.php");
             "For I know the plans I have for you, declares the LORD, plans to prosper you and not to harm you, plans to give you hope and a future. (Jer 29:11)"
         ];
 
+        $books = [
+            43,1,24
+        ];
+        $bookNames = ["John","Genesis","Jeremiah"];
+
+        $chapters = [1,1,29];
+        $verseNumbers = [1,1,11];
+
         $index = rand(0,count($verses)-1);
         $message = $verses[$index];
-        return $message;
+        $book = $books[$index];
+        $bookName = $bookNames[$index];
+        $chapter = $chapters[$index];
+        $verse = $verseNumbers[$index];
+        $retVal = [
+            "book"=>$book,
+            "bookName"=>$bookName,
+            "chapter"=>$chapter,
+            "verse"=>$verse,
+            "text"=>$message
+        ];
+        return $retVal;
     }
 
 	/////////////////////////////////////////////////////////////////////////

@@ -87,6 +87,17 @@
             </intent-filter>
         </service>
 
+        <!--
+        <receiver android:name=".Firebase.NotificationBroadcastReceiver">
+
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE">
+                </action>
+            </intent-filter>
+
+        </receiver>
+        -->
+
 
         <!--Activities-->
 

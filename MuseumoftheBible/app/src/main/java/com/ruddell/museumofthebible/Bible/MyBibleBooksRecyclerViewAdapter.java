@@ -29,7 +29,7 @@ public class MyBibleBooksRecyclerViewAdapter extends RecyclerView.Adapter<MyBibl
     private final List<BibleBookItem> mValues;
     private final BibleBooksFragment.OnListFragmentInteractionListener mListener;
     public static final List<BibleBookItem> ITEMS = new ArrayList<BibleBookItem>();
-    public static final Map<String, BibleBookItem> ITEM_MAP = new HashMap<String, BibleBookItem>();
+    public static final Map<Integer, BibleBookItem> ITEM_MAP = new HashMap<Integer, BibleBookItem>();
 
     public MyBibleBooksRecyclerViewAdapter(List<BibleBookItem> items, BibleBooksFragment.OnListFragmentInteractionListener listener) {
         if (DEBUG) Log.d(TAG, "constructor");
@@ -46,7 +46,7 @@ public class MyBibleBooksRecyclerViewAdapter extends RecyclerView.Adapter<MyBibl
         while (cursor.moveToNext()) {
             String shortName = cursor.getString(BibleContract.Books.COLUMN_SHORT_NAME);
             String longName = cursor.getString(BibleContract.Books.COLUMN_LONG_NAME);
-            String id = cursor.getString(BibleContract.Books.COLUMN_BOOK_ID);
+            int id = cursor.getInt(BibleContract.Books.COLUMN_BOOK_ID);
             BibleBookItem item = new BibleBookItem(id,shortName,longName);
             addItem(item);
         }
@@ -115,11 +115,11 @@ public class MyBibleBooksRecyclerViewAdapter extends RecyclerView.Adapter<MyBibl
      * An item representing a book of the Bible.
      */
     public static class BibleBookItem {
-        public final String id;
+        public final int id;
         public final String shortName;
         public final String longName;
 
-        public BibleBookItem(String id, String shortName, String longName) {
+        public BibleBookItem(int id, String shortName, String longName) {
             this.id = id;
             this.shortName = shortName;
             this.longName = longName;
