@@ -231,7 +231,7 @@ require_once("../config.php");
 	/////////////////////////////////////////////////////////////////////////
     //get registered devices and send message
 
-    $sql = "SELECT DISTINCT gcmToken FROM " . TABLE_REGISTER_TOKEN . " WHERE channel = '" . CHANNEL_VERSE_OF_THE_DAY . "' AND application='" . UDACITY_APP_ID . "'";
+    $sql = "SELECT DISTINCT gcmToken FROM " . TABLE_REGISTER_TOKEN . " WHERE channel = '" . CHANNEL_VERSE_OF_THE_DAY . "' AND application='" . UDACITY_APP_ID . "' AND active='1'";
     $res = mysqli_query($mysqli, $sql);
     $tokens = array();
     if ($res) while ($row=mysqli_fetch_array($res)) {

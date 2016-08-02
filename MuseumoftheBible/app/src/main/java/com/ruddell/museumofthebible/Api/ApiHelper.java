@@ -94,6 +94,48 @@ public class ApiHelper {
         }).start();
     }
 
+    public static void registerVerseOfTheDay(final String channel, final Context context, final boolean isActive) {
+        if (DEBUG_LOG) Log.d(TAG, "registerVerseOfTheDay");
+        //register the gcm token with the server
+        //perform in background thread
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final String url = UrlBuilder.setGcmStatus();
+                final HttpSendObj sendObj = new HttpSendObj();
+                sendObj.url = url;
+                sendObj.method = UrlBuilder.HttpMethods.POST;
+
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("deviceId", PrefUtils.getPrefDeviceId(context));
+                    jsonObject.put("channel", channel);
+                    jsonObject.put("application", context.getPackageName());
+                    jsonObject.put("status", isActive ? "1" : "0");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                sendObj.jsonObject = jsonObject;
+                HttpResponse response = performApiRequest(sendObj);
+                if (DEBUG_LOG) Log.d(TAG, "registerVerseOfTheDay response:" + response.toString());
+            }
+        }).start();
+    }
+
+    public static void testVerseOfDay(final Context context) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final String url = UrlBuilder.getVerseOfDayTest();
+                final HttpSendObj sendObj = new HttpSendObj();
+                sendObj.url = url;
+                sendObj.method = UrlBuilder.HttpMethods.GET;
+                HttpResponse response = performApiRequest(sendObj);
+                if (DEBUG_LOG) Log.d(TAG, "testVerseOfDay response:" + response.toString());
+            }
+        }).start();
+    }
+
     public static void registerGcmToken(final String gcmToken, final String channel, final Context context) {
         if (DEBUG_LOG) Log.d(TAG, "registerGcmToken");
         //register the gcm token with the server

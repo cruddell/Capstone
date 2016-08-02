@@ -35,4 +35,12 @@ public class UrlBuilder {
     public static String registerGcmTokenUrl() {
         return BASE_URL_DEV + "gcm_registration.php";
     }
+
+    public static String setGcmStatus() {
+        return BASE_URL_DEV + "gcm_status.php";
+    }
+
+    public static String getVerseOfDayTest() {
+        return BASE_URL_DEV + "push/gcm_verseOfTheDay.php";
+    }
 }

@@ -7,6 +7,7 @@ package com.ruddell.museumofthebible.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,7 +52,7 @@ public class PrefUtils {
 
     public static boolean getPrefVerseOfTheDay(final Context context) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-        return sp.getBoolean(PREF_VERSE_OF_THE_DAY, false);
+        return sp.getBoolean(PREF_VERSE_OF_THE_DAY, true);
     }
 
     public static void setPrefVerseOfTheDay(final Context context, boolean value) {
@@ -74,6 +75,7 @@ public class PrefUtils {
         String deviceId = sp.getString(PREF_DEVICE_ID, "");
         if (deviceId.length()<1) {
             //need new device Id
+            Log.e(TAG,"creating new device id");
             deviceId = UUID.randomUUID().toString();
             setPrefDeviceId(context, deviceId);
         }
@@ -83,7 +85,8 @@ public class PrefUtils {
 
     public static void setPrefDeviceId(final Context context, String value) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-        sp.edit().putString(PREF_DEVICE_ID, value);
+        sp.edit().putString(PREF_DEVICE_ID, value).apply();
+        Log.d(TAG,"setPrefDeviceId:" + value);
     }
 
     public static JSONArray getFeaturedExhibits(final Context context) {

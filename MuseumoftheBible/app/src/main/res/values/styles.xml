@@ -17,6 +17,10 @@
             @transition/change_image_transform</item>
     </style>
 
+    <style name="BibleActivity" parent="AppTheme">
+        <item name="android:textColorSecondary">@color/md_brown_50</item>
+    </style>
+
     <style name="ChildScreenTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
