@@ -10,11 +10,13 @@ import android.util.Pair;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.ruddell.museumofthebible.utils.Utils;
 import com.ruddell.ticketingbackend.ticketApi.TicketApi;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
+import com.ruddell.ticketingbackend.ticketApi.model.Ticket;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -34,7 +36,9 @@ public class TicketingBackendHelper {
     private static final boolean DEBUG_LOG = true;
     private static final String TAG = "TicketingBackendHelper";
     private ApiListener mListener;
-    private static final String mApiUrl = "http://10.0.2.2:8080/_ah/api/";
+    private static final String mApiUrl_localhost = "http://10.0.2.2:8080/_ah/api/";
+    private static final String mApiUrl_deployed = "https://nanodegree-capstone.appspot.com/_ah/api/";
+    private static final String mApiUrl = mApiUrl_deployed;
     private static final String ticketImageFileName = "qr_code.png";
 
     public TicketingBackendHelper(ApiListener mListener) {
@@ -57,8 +61,16 @@ public class TicketingBackendHelper {
 
                 myApiService = builder.build();
                 try {
-                    double costPerTicket = myApiService.getCostPerTicket().execute().getData();
-                    if (mListener!=null) mListener.apiDoubleRetrieved(costPerTicket);
+                    final double costPerTicket = myApiService.getCostPerTicket().execute().getData();
+                    if (mListener!=null) {
+                        Utils.runOnUiThread(context, new Runnable() {
+                            @Override
+                            public void run() {
+                                mListener.apiDoubleRetrieved(costPerTicket);
+                            }
+                        });
+
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -108,7 +120,9 @@ public class TicketingBackendHelper {
                             .setExpiration(purchaseObject.expiration)
                             .setCvc(purchaseObject.cvc)
                             ;
-                    qrcodeUrl = myApiService.purchaseTicket(apiObject).execute().getTicketUrl();
+                    Ticket ticket = myApiService.purchaseTicket(apiObject).execute();
+                    qrcodeUrl = ticket.getTicketUrl();
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

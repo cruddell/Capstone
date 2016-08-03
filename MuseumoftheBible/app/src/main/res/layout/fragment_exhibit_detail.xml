@@ -55,58 +55,15 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/timeRemaining"
-                android:layout_below="@+id/titleView"
-                android:layout_marginTop="10dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="30dp"
-                android:textColor="@color/md_white_1000"
-                tools:text="0:30"
-                />
-            <SeekBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/seekBar2"
-                android:progress="35"
-                android:progressBackgroundTint="@color/md_grey_50"
-                android:layout_below="@+id/titleView"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="30dp"
-                android:layout_toLeftOf="@+id/timeRemaining"
-                />
-
-
-            <ImageView
-                android:src="@drawable/ic_replay_10_white_24dp"
-                android:layout_width="@dimen/exhibitAudioControlSize"
-                android:layout_height="@dimen/exhibitAudioControlSize"
-                android:layout_alignTop="@+id/playButton"
-                android:layout_toStartOf="@+id/playButton"
-                android:layout_marginEnd="@dimen/exhibitAudioControlSize"
-                android:id="@+id/rewindButton"/>
-
-            <ImageView
-                android:src="@drawable/ic_forward_10_white_24dp"
-                android:layout_width="@dimen/exhibitAudioControlSize"
-                android:layout_height="@dimen/exhibitAudioControlSize"
-                android:layout_alignTop="@+id/playButton"
-                android:layout_toEndOf="@+id/playButton"
-                android:layout_marginStart="@dimen/exhibitAudioControlSize"
-                android:id="@+id/forwardButton"/>
-
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/view"
-                android:layout_alignStart="@+id/seekBar2"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginTop="@dimen/detailTextMarginVertical"
-                android:layout_above="@+id/playButton"
-                android:layout_marginBottom="@dimen/detailTextMarginVertical"
-                android:layout_alignEnd="@+id/timeRemaining">
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/detailTextMarginVertical">
                 <TextView
                     tools:text="Lorem ipsum dolor sit amet, sit justo altera volumus eu, te pri assum debet noster. Eu dicat iisque ius, at eum ceteros rationibus, nam at possit adolescens. Cu his munere habemus, movet labores facilis et duo, vivendum referrentur quo et. His cu alia facilis. Has ocurreret dissentiet eu, eum iudico appareat invidunt in, est mundi omnes affert at. Pro eu mediocrem principes, habeo solet antiopam ex quo, zril clita ne ius."
                     android:layout_width="match_parent"
@@ -117,15 +74,6 @@
                     android:textColor="@color/md_white_1000"/>
             </ScrollView>
 
-            <ImageButton
-                android:src="@drawable/ic_play_arrow_white_24dp"
-                android:layout_width="@dimen/exhibitAudioControlSize"
-                android:layout_height="@dimen/exhibitAudioControlSize"
-                android:layout_marginBottom="34dp"
-                android:background="@color/transparent"
-                android:id="@+id/playButton"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"/>
 
 
         </RelativeLayout>

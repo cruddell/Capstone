@@ -37,6 +37,9 @@ import java.util.Locale;
 public class ExhibitActivity extends BaseActivity implements ViewPager.OnPageChangeListener, MediaPlayerHelper.MediaPlayerHelperListener, SeekBar.OnSeekBarChangeListener, ExhibitDetailFragment.ExhibitCallback {
     private static final String TAG = "ExhibitActivity";
     private static final boolean DEBUG_LOG = true;
+    private static final String ARG_MEDIA_FILE = "media_file";
+    private static final String ARG_MEDIA_PROGRESS = "media_progress";
+
     private ExhibitPagerAdapter mAdapter;
     private ViewPager mViewPager;
     protected int mViewPagerPageMargin = 0;
@@ -46,6 +49,7 @@ public class ExhibitActivity extends BaseActivity implements ViewPager.OnPageCha
     private ImageButton mPauseButton;
     private TextView mRemainingTimeLabel;
 
+    private String mMediaFile = "";
     int mDuration = 0;
     int mProgress = 0;
     static final int UPDATE_TIMER_INTERVAL = 100;
@@ -61,6 +65,12 @@ public class ExhibitActivity extends BaseActivity implements ViewPager.OnPageCha
 
     private boolean mDidInit = false;
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString(ARG_MEDIA_FILE, mMediaFile);
+        outState.putInt(ARG_MEDIA_PROGRESS, mProgress);
+        super.onSaveInstanceState(outState);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +131,10 @@ public class ExhibitActivity extends BaseActivity implements ViewPager.OnPageCha
             }
         }, 2000);
 
+        if (savedInstanceState!=null) {
+            mProgress = savedInstanceState.getInt(ARG_MEDIA_PROGRESS);
+            setMedia(savedInstanceState.getString(ARG_MEDIA_FILE), mProgress, true);
+        }
     }
 
     @Override
@@ -309,9 +323,8 @@ public class ExhibitActivity extends BaseActivity implements ViewPager.OnPageCha
 
     }
 
-
-
-    public void setMedia(String audioFile) {
+    private void setMedia(String audioFile, int progress, boolean autoplay) {
+        mMediaFile = audioFile;
         File directory = Utils.getExternalDirectory();
         File outputFile = new File(directory, audioFile);
         String mediaPath = outputFile.getPath();
@@ -319,14 +332,18 @@ public class ExhibitActivity extends BaseActivity implements ViewPager.OnPageCha
         if (outputFile.exists()) {
             if (mMediaPlayerHelper!=null) {
                 if (mMediaPlayerHelper.isReady()) mMediaPlayerHelper.stop();
-                mMediaPlayerHelper.updateMedia(mediaPath,0,true);
-                updateSeekBarProgress(0);
+                mMediaPlayerHelper.updateMedia(mediaPath,progress,autoplay);
+                updateSeekBarProgress(progress);
             }
             else {
                 mMediaPlayerHelper = new MediaPlayerHelper(ExhibitActivity.this,mediaPath,true,this);
-                updateSeekBarProgress(0);
+                updateSeekBarProgress(progress);
             }
         }
+    }
+
+    public void setMedia(String audioFile) {
+        setMedia(audioFile, 0, true);
     }
 
     public void stop() {

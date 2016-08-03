@@ -79,9 +79,12 @@ public class PaymentFragment extends Fragment {
     }
 
     public void updateWithCard(CreditCard creditCard) {
-        mCardField.setText(creditCard.getRedactedCardNumber());
-        mExpiryField.setText(creditCard.expiryMonth + creditCard.expiryYear);
-        mCVCField.setText(creditCard.cvv);
+        if (creditCard!=null) {
+            mCardField.setText(creditCard.getRedactedCardNumber());
+            mExpiryField.setText(creditCard.expiryMonth + creditCard.expiryYear);
+            mCVCField.setText(creditCard.cvv);
+        }
+
     }
 
     @Override

@@ -45,32 +45,7 @@
             android:name=".Database.DatabaseService"
             android:exported="false"/>
 
-        <!--Google Cloud Messaging-->
-        <!--
-        <receiver android:name="com.google.android.gms.gcm.GcmReceiver"
-                  android:exported="true"
-                  android:permission="com.google.android.c2dm.permission.SEND">
-            <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
-                <category android:name="com.ruddell.museumofthebible.gcm"/>
-            </intent-filter>
-        </receiver>
-        <service
-            android:name="com.ruddell.museumofthebible.GoogleCloudMessaging.MyGcmListenerService"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-            </intent-filter>
-        </service>
-        <service
-            android:name="com.ruddell.museumofthebible.GoogleCloudMessaging.MyInstanceIDListenerService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.android.gms.iid.InstanceID" />
-            </intent-filter>
-        </service>
-        <service android:name=".GoogleCloudMessaging.RegistrationIntentService" android:exported="false"/>
-        -->
+
 
 
         <!--Firebase-->
@@ -87,21 +62,9 @@
             </intent-filter>
         </service>
 
-        <!--
-        <receiver android:name=".Firebase.NotificationBroadcastReceiver">
-
-            <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE">
-                </action>
-            </intent-filter>
-
-        </receiver>
-        -->
-
-
         <!--Activities-->
 
-        <activity android:name=".Home.Home">
+        <activity android:name=".Home.Home" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
