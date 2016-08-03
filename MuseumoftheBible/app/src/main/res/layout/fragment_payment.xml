@@ -49,6 +49,7 @@
                         android:ems="10"
                         android:id="@+id/cardNumber"
                         android:layout_below="@+id/textView"
+                        android:contentDescription="@string/ticket_credit_card_number"
                         android:layout_alignStart="@+id/textView"
                         android:layout_marginEnd="@dimen/payment_field_margin_left"
                         android:layout_marginTop="@dimen/payment_field_margin_top"
@@ -96,7 +97,7 @@
                                 android:layout_rowWeight="1"
                                 android:layout_row="0"
                                 android:layout_weight="1"
-                                android:layout_marginLeft="@dimen/payment_field_margin_left_sm" />
+                                android:layout_marginStart="@dimen/payment_field_margin_left_sm" />
                         </TableRow>
 
                         <TableRow
@@ -119,6 +120,7 @@
                                 android:padding="@dimen/payment_field_padding"
                                 android:background="@drawable/green_border"
                                 android:layout_marginTop="@dimen/payment_field_margin_top"
+                                android:contentDescription="@string/ticket_expiration"
                                 android:hint="MMYY" />
 
                             <EditText
@@ -134,9 +136,10 @@
                                 android:layout_rowWeight="1"
                                 android:layout_row="1"
                                 android:layout_weight="1"
-                                android:layout_marginLeft="@dimen/payment_field_margin_left_sm"
+                                android:layout_marginStart="@dimen/payment_field_margin_left_sm"
                                 android:padding="@dimen/payment_field_padding"
                                 android:background="@drawable/green_border"
+                                android:contentDescription="@string/ticket_cvc"
                                 android:layout_marginTop="@dimen/payment_field_margin_top"
                                 android:hint="***" />
                         </TableRow>
@@ -150,6 +153,7 @@
                         android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
                         android:onClick="onScanPress"
+                        android:contentDescription="@string/ticket_scan_button"
                         android:background="@drawable/card_scan_icon"
                         android:layout_marginTop="@dimen/payment_field_margin_top"
                         android:layout_marginEnd="@dimen/payment_field_margin_left" />
@@ -164,6 +168,7 @@
                 android:id="@+id/textView4"
                 android:layout_marginStart="@dimen/payment_field_margin_left_sm"
                 android:layout_marginEnd="@dimen/payment_field_margin_left_sm"
+                android:contentDescription="@string/ticket_amount_to_charge_label"
                 android:textSize="20sp" />
 
             <TextView
@@ -179,6 +184,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/credit_card_demo_app"
+                android:contentDescription="@string/credit_card_demo_app"
                 android:id="@+id/textView6"
                 android:layout_marginTop="@dimen/text_margin"
                 android:textColor="#000000" />
@@ -193,6 +199,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/cancel"
                     android:id="@+id/button3"
+                    android:contentDescription="@string/ticket_cancel_button"
                     android:layout_marginStart="@dimen/payment_field_margin_left"
                     style="@style/Widget.AppCompat.Button.Colored"
                     android:onClick="backPressed"
@@ -206,6 +213,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/purchase"
+                    android:contentDescription="@string/ticket_purchase_button"
                     android:id="@+id/button2"
                     android:layout_marginEnd="@dimen/payment_field_margin_left"
                     style="@style/Widget.AppCompat.Button.Colored"

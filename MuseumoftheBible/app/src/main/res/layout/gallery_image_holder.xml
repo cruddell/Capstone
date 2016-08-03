@@ -3,15 +3,17 @@
              xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+    >
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/imageView4"
         tools:src="@drawable/img3500"
-        android:layout_marginLeft="@dimen/gallery_image_fragment_viewpager_content_margin"
-        android:layout_marginRight="@dimen/gallery_image_fragment_viewpager_content_margin"
+        android:layout_marginStart="@dimen/gallery_image_fragment_viewpager_content_margin"
+        android:layout_marginEnd="@dimen/gallery_image_fragment_viewpager_content_margin"
         android:layout_marginTop="@dimen/gallery_image_fragment_viewpager_content_marginTop"
+        android:contentDescription="@string/gallery_image"
         />
 </FrameLayout>

@@ -23,8 +23,8 @@
             android:name="com.ruddell.museumofthebible.Bible.BibleChapterFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             app:layoutManager="LinearLayoutManager"
             tools:context="com.ruddell.museumofthebible.Bible.BibleChapterFragment"
             tools:listitem="@layout/fragment_biblechapter" />
@@ -35,9 +35,9 @@
             android:id="@+id/scrollView">
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:textSize="@dimen/bible_text_font_size"
                 android:id="@+id/bibleText"
                 />

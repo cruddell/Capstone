@@ -103,5 +103,8 @@
     <string name="appwidget_text">For I know the plans I have for you,” declares the LORD, “plans to prosper you and not to harm you, plans to give you hope and a future. (Jer 29:11)</string>
     <string name="add_widget">Add widget</string>
     <string name="widget_title">Verse of the Day</string>
+    <string name="ticket_continue_button">Continue Button</string>
+    <string name="image">Image</string>
+    <string name="exhibits_seekbar">Seek Bar</string>
 
 </resources>
