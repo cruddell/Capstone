@@ -1,6 +1,3 @@
-/*
- * Copyright (c) 2015. Museum of the Bible
- */
 
 package com.ruddell.museumofthebible.Exhibits;
 
@@ -24,7 +21,7 @@ public class MediaPlayerHelper implements
         MediaPlayer.OnCompletionListener,
         MediaPlayer.OnSeekCompleteListener {
     private static final String TAG = "MediaPlayerHelper";
-    private static boolean DEBUG = false;
+    private static boolean DEBUG = true;
 
     private StateMediaPlayer mCurrentState;
     private String mMediaPath;
@@ -64,6 +61,32 @@ public class MediaPlayerHelper implements
     }
 
     /** class constructor */
+    public MediaPlayerHelper(Context context, String mediaPath, boolean playWhenReady, MediaPlayerHelperListener listener, int progress) {
+        //mContext = context;
+        mMediaPath = mediaPath;
+        mStartPosition = progress;
+
+        if (mediaPath==null) {
+            Log.e(TAG,"null filename!");
+            return;
+        } else Log.d(TAG,"loading file at:" + mediaPath);
+        if(listener != null) {
+            mEventListener = listener;
+        } else {
+            mEventListener = new DummyListener();  // if not set, add dummy listener to handle events
+        }
+
+        getMediaPlayer();
+        setState(new StateIdle());
+
+        if (mediaPath.length()>0) {
+            mCurrentState.setDataSource(mediaPath);
+        }
+
+        mPlayWhenReady = playWhenReady;
+    }
+
+    /** class constructor */
     MediaPlayerHelper(Context context, boolean playWhenReady, MediaPlayerHelperListener listener) {
         //mContext = context;
 
@@ -86,15 +109,6 @@ public class MediaPlayerHelper implements
         }
     }
 
-//    public void updateMediaFile(String filename) {
-//        mMediaPath = FileHelper.getAudioPath(mContext, filename);
-//        updateMedia(mMediaPath);
-//    }
-//
-//    public void updateMediaFileForTours(String filename) {
-//        mMediaPath = FileHelper.getAudioPathForTours(mContext, filename);
-//        updateMedia(mMediaPath);
-//    }
 
 
     public void updateMedia(String filePath) {
@@ -164,12 +178,6 @@ public class MediaPlayerHelper implements
         setState(new StateIdle());
     }
 
-//    public void playAfterReset() {
-//        int position = mMediaPlayer.getCurrentPosition();
-//        mMediaPlayer.reset();
-//        mMediaPlayer.prepareAsync();
-//        setState(new StatePreparing());
-//    }
 
     public void seekTo(int position) { mCurrentState.seekTo(position); }
 

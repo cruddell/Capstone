@@ -69,6 +69,7 @@ public class ExhibitActivity extends BaseActivity implements ViewPager.OnPageCha
     protected void onSaveInstanceState(Bundle outState) {
         outState.putString(ARG_MEDIA_FILE, mMediaFile);
         outState.putInt(ARG_MEDIA_PROGRESS, mProgress);
+        if (mMediaPlayerHelper.isPlaying()) mMediaPlayerHelper.stop();
         super.onSaveInstanceState(outState);
     }
 
@@ -324,6 +325,7 @@ public class ExhibitActivity extends BaseActivity implements ViewPager.OnPageCha
     }
 
     private void setMedia(String audioFile, int progress, boolean autoplay) {
+        Log.d(TAG,"setMedia progress:" + progress);
         mMediaFile = audioFile;
         File directory = Utils.getExternalDirectory();
         File outputFile = new File(directory, audioFile);
@@ -336,7 +338,7 @@ public class ExhibitActivity extends BaseActivity implements ViewPager.OnPageCha
                 updateSeekBarProgress(progress);
             }
             else {
-                mMediaPlayerHelper = new MediaPlayerHelper(ExhibitActivity.this,mediaPath,true,this);
+                mMediaPlayerHelper = new MediaPlayerHelper(ExhibitActivity.this,mediaPath,true,this, progress);
                 updateSeekBarProgress(progress);
             }
         }
@@ -357,6 +359,7 @@ public class ExhibitActivity extends BaseActivity implements ViewPager.OnPageCha
     }
 
     private void updateProgress(int position) {
+        Log.d(TAG,"updateProgress(" + position + ")");
         mProgress = position;
         updateSeekBarProgress(mProgress);
         mRemainingTimeLabel.setText(makeTimeString((long) (mDuration - mProgress) / 1000));

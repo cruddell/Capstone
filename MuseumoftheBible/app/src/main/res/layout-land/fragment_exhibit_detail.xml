@@ -1,0 +1,83 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_red_50"
+    >
+    <android.support.v7.widget.CardView
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/gallery_image_fragment_viewpager_content_margin"
+        android:layout_marginEnd="@dimen/gallery_image_fragment_viewpager_content_margin"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="1.0"
+            android:background="@color/md_grey_900"
+            tools:context=".Exhibits.ExhibitActivity"
+            >
+
+            <ImageView
+                tools:src="@drawable/img3500"
+                android:layout_width="match_parent"
+                android:id="@+id/backgroundImage"
+                android:scaleType="centerCrop"
+                android:alpha=".45"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"/>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:alpha=".35"
+                android:background="@color/transparent"
+                android:id="@+id/view"/>
+
+            <TextView
+                tools:text="King James Bible, 3rd Folio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:id="@+id/titleView"
+                android:background="@color/transparent"
+                android:textColor="@color/md_white_1000"
+                android:textSize="24sp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"/>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/view"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="@dimen/detailTextMarginVertical"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/detailTextMarginVertical">
+                <TextView
+                    tools:text="Lorem ipsum dolor sit amet, sit justo altera volumus eu, te pri assum debet noster. Eu dicat iisque ius, at eum ceteros rationibus, nam at possit adolescens. Cu his munere habemus, movet labores facilis et duo, vivendum referrentur quo et. His cu alia facilis. Has ocurreret dissentiet eu, eum iudico appareat invidunt in, est mundi omnes affert at. Pro eu mediocrem principes, habeo solet antiopam ex quo, zril clita ne ius."
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:id="@+id/detailTextView"
+
+                    android:textColor="@color/md_white_1000"/>
+            </ScrollView>
+
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</FrameLayout>
+
+

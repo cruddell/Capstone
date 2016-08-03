@@ -49,6 +49,13 @@ public class BibleActivity extends BaseActivity implements BibleBooksFragment.On
     }
 
     @Override
+    public void onAttachFragment(final Fragment fragment) {
+        super.onAttachFragment(fragment);
+        if (fragment instanceof BibleBooksFragment) mBibleBooksFragment = (BibleBooksFragment) fragment;
+        else if (fragment instanceof BibleChapterFragment) mBibleChapterFragment = (BibleChapterFragment) fragment;
+    }
+
+    @Override
     public void onListFragmentInteraction(MyBibleBooksRecyclerViewAdapter.BibleBookItem item) {
         if (DEBUG) Log.d(TAG, "onListFragmentInteraction:" + item.longName);
         mSelectedBookId = item.id;

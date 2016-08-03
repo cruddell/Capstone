@@ -80,7 +80,7 @@
 
         <activity android:name=".Help.HelpActivity"/>
         <activity android:name=".Bible.BibleActivity"/>
-        <activity android:name=".Ticketing.TicketActivity"/>
+        <activity android:name=".Ticketing.TicketActivity" android:screenOrientation="portrait"/>
 
         <!-- card.io activities: -->
         <activity
