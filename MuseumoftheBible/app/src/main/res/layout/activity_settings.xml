@@ -83,7 +83,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="test"
+        tools:text="test"
         android:onClick="onClick"
         android:id="@+id/testVerseOfDay"
         android:layout_below="@+id/verseOfDaySetting"

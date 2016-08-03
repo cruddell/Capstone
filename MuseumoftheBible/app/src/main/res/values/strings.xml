@@ -100,5 +100,8 @@
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="push_notifications">Push Notifications:</string>
     <string name="verse_of_the_day">Verse of the Day:</string>
+    <string name="appwidget_text">For I know the plans I have for you,” declares the LORD, “plans to prosper you and not to harm you, plans to give you hope and a future. (Jer 29:11)</string>
+    <string name="add_widget">Add widget</string>
+    <string name="widget_title">Verse of the Day</string>
 
 </resources>

@@ -33,6 +33,7 @@ import com.ruddell.museumofthebible.Map.MapActivity;
 import com.ruddell.museumofthebible.R;
 import com.ruddell.museumofthebible.Settings.SettingsActivity;
 import com.ruddell.museumofthebible.Ticketing.TicketActivity;
+import com.ruddell.museumofthebible.Widget.WidgetUtil;
 import com.ruddell.museumofthebible.utils.PrefUtils;
 import com.ruddell.museumofthebible.views.AnimatedImageButton;
 
@@ -118,6 +119,12 @@ public class Home extends BaseActivity {
             Log.d(TAG, "InstanceID token: " + FirebaseInstanceId.getInstance().getToken());
         }
 
+        //check if widget has previously been updated...
+        String widgetText = WidgetUtil.getVerseOfDay(this);
+        if (widgetText.length()<1) {
+            widgetText = getResources().getString(R.string.appwidget_text);
+            WidgetUtil.setVerseOfDay(getApplication(), widgetText);
+        }
 
     }
 
