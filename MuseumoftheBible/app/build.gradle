@@ -2,9 +2,16 @@ apply plugin: 'com.android.application'
 
 
 android {
+    signingConfigs {
+        releaseConfig {
+            keyAlias 'Capstone'
+            keyPassword 'Ud@cityR0cks'
+            storeFile file('/Users/chris/Documents/GIT/nanodegree/Capstone/capstone_keystore.jks')
+            storePassword 'Ud@cityR0cks'
+        }
+    }
     compileSdkVersion 24
     buildToolsVersion "23.0.3"
-
     defaultConfig {
         applicationId "com.ruddell.museumofthebible"
         minSdkVersion 21
@@ -16,18 +23,19 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.releaseConfig
         }
     }
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(path: ':ticketing_backend', configuration: 'android-endpoints')
     compile 'com.android.support:appcompat-v7:24.0.0'
     compile 'com.android.support:support-annotations:24.0.0'
     compile 'com.android.support:support-v13:24.0.0'
     compile 'com.google.android.gms:play-services-maps:9.2.0'
-    compile "com.google.android.gms:play-services-gcm:9.2.0"
+    compile 'com.google.android.gms:play-services-gcm:9.2.0'
     compile 'com.android.support:support-v4:24.0.0'
     compile 'com.google.code.gson:gson:2.5'
     compile 'com.android.support:recyclerview-v7:24.0.0'
@@ -37,5 +45,6 @@ dependencies {
     compile 'com.google.firebase:firebase-messaging:9.2.1'
     testCompile 'junit:junit:4.12'
 }
+
 
 apply plugin: 'com.google.gms.google-services'
