@@ -37,7 +37,7 @@
                 android:textColor="@color/md_teal_50"
                 android:textSize="24sp"
                 android:gravity="center_vertical"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin" />
+                android:layout_marginStart="@dimen/activity_horizontal_margin" />
         </LinearLayout>
 
     </android.support.v7.widget.Toolbar>
@@ -53,6 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/push_notifications"
+            android:contentDescription="@string/push_notifications"
             android:layout_marginTop="16dp"
             android:textSize="20sp"
             android:gravity="center_horizontal"
@@ -77,13 +78,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
+            android:contentDescription="@string/settings_verse_of_the_day_notifications"
             android:id="@+id/switch_verseOfTheDay"
             />
     </LinearLayout>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="test"
+        android:contentDescription="@string/settings_test_button"
+        tools:text="test"
         android:onClick="onClick"
         android:id="@+id/testVerseOfDay"
         android:layout_below="@+id/verseOfDaySetting"

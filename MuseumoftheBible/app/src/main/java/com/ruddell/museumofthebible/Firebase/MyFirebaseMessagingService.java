@@ -14,6 +14,7 @@ import com.google.firebase.messaging.RemoteMessage;
 import com.ruddell.museumofthebible.Firebase.NotificationTypes.VerseOfTheDay;
 import com.ruddell.museumofthebible.Home.Home;
 import com.ruddell.museumofthebible.R;
+import com.ruddell.museumofthebible.Widget.WidgetUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -58,6 +59,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
             VerseOfTheDay verseOfTheDay = new VerseOfTheDay(book, chapter, verse, text);
             sendNotification(verseOfTheDay);
+
+            //update widget
+            WidgetUtil.setVerseOfDay(getApplication(), text);
+
+
 
         } catch (JSONException e) {
             e.printStackTrace();

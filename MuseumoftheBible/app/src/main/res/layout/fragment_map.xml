@@ -7,6 +7,6 @@
     <com.google.android.gms.maps.SupportMapFragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/mapView"></com.google.android.gms.maps.SupportMapFragment>
+        android:id="@+id/mapView"/>
 
 </FrameLayout>

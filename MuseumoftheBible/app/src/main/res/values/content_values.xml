@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="widget_description">Verse of the Day</string>
+    <string name="gallery_image">Gallery Image</string>
+    <string name="ticket_name">Name</string>
+    <string name="ticket_email">Email</string>
+    <string name="ticket_phone">Phone</string>
+    <string name="ticket_number_of_tickets">Number of Tickets</string>
+    <string name="ticket_qrcode">Ticket Image</string>
+    <string name="ticket_credit_card_number">Credit Card Number Input</string>
+    <string name="ticket_expiration">Expiration Month Month Year Year</string>
+    <string name="ticket_cvc">Security Code on Back</string>
+    <string name="ticket_scan_button">Scan Button</string>
+    <string name="ticket_amount_to_charge_label">Amount to Charge Label</string>
+    <string name="ticket_cancel_button">Cancel Button</string>
+    <string name="ticket_purchase_button">Purchase Button</string>
+    <string name="exhibit_background_image">Background Image</string>
+    <string name="exhibit_title">Title</string>
+    <string name="exhibit_description">Description</string>
+    <string name="settings_verse_of_the_day_notifications">Verse of the Day Notifications</string>
+    <string name="settings_test_button">Test Button</string>
+    <string name="exhibits_rewind_10_seconds">Rewind 10 seconds</string>
+    <string name="exhibits_play_button">Play Button</string>
+    <string name="exhibits_fast_forward">Fast Forward 10 seconds</string>
+</resources>

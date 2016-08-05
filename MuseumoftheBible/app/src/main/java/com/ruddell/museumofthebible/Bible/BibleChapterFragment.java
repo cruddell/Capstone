@@ -29,8 +29,6 @@ public class BibleChapterFragment extends Fragment {
     private static final String TAG = "BibleChapterFragment";
     private static final boolean DEBUG = true;
 
-    private static final String ARG_COLUMN_COUNT = "column-count";
-
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
     private int mBookId;
@@ -41,6 +39,12 @@ public class BibleChapterFragment extends Fragment {
     private ScrollView mScrollView;
     private TextView mBibleText;
 
+    private static final String ARG_COLUMN_COUNT = "column_count";
+    private static final String ARG_BOOK_ID = "book_id";
+    private static final String ARG_BOOK_NAME = "book_name";
+    private static final String ARG_BIBLE_TEXT = "bible_text";
+    private static final String ARG_STATE = "state";
+
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -48,7 +52,6 @@ public class BibleChapterFragment extends Fragment {
     public BibleChapterFragment() {
     }
 
-    // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
     public static BibleChapterFragment newInstance(int columnCount, OnListFragmentInteractionListener listener) {
         BibleChapterFragment fragment = new BibleChapterFragment();
@@ -93,6 +96,16 @@ public class BibleChapterFragment extends Fragment {
     }
 
     @Override
+    public void onSaveInstanceState(final Bundle outState) {
+        outState.putInt(ARG_COLUMN_COUNT, mColumnCount);
+        outState.putInt(ARG_BOOK_ID, mBookId);
+        outState.putString(ARG_BOOK_NAME, mBookName);
+        outState.putString(ARG_BIBLE_TEXT, mBibleText.getText().toString());
+        outState.putBoolean(ARG_STATE, mScrollView.getVisibility()==View.VISIBLE);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View viewContainer = inflater.inflate(R.layout.fragment_biblechapter_list, container, false);
@@ -122,6 +135,23 @@ public class BibleChapterFragment extends Fragment {
                 }
             }));
         }
+
+
+        if (savedInstanceState!=null) {
+            mColumnCount = savedInstanceState.getInt(ARG_COLUMN_COUNT);
+            mBookId = savedInstanceState.getInt(ARG_BOOK_ID);
+            mBookName = savedInstanceState.getString(ARG_BOOK_NAME);
+            mBookNameLabel.setText(mBookName);
+            mBibleText.setText(savedInstanceState.getString(ARG_BIBLE_TEXT));
+            if (savedInstanceState.getBoolean(ARG_STATE)) {
+                mScrollView.setVisibility(View.VISIBLE);
+                mRecyclerView.setAlpha(0.0f);
+                mScrollView.setAlpha(1.0f);
+            }
+            if (getActivity() instanceof OnListFragmentInteractionListener) mListener = (OnListFragmentInteractionListener)getActivity();
+            mAdapter.updateQuery(mBookId);
+        }
+
         if (mListener!=null) mListener.onFragmentViewCreated(this);
         return viewContainer;
     }

@@ -19,6 +19,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/show_ticket_to_agent"
+                android:contentDescription="@string/show_ticket_to_agent"
                 android:id="@+id/textView5"
                 android:layout_gravity="center_horizontal|top"
                 android:layout_margin="@dimen/text_margin"
@@ -28,6 +29,7 @@
                 android:layout_width="@dimen/ticket_qrcode_size"
                 android:layout_height="@dimen/ticket_qrcode_size"
                 android:id="@+id/ticketView"
+                android:contentDescription="@string/ticket_qrcode"
                 android:background="@drawable/no_ticket"
                 android:layout_centerInParent="true" />
         </RelativeLayout>

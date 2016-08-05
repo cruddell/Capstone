@@ -26,7 +26,6 @@
                 tools:src="@drawable/img3500"
                 android:layout_width="match_parent"
                 android:id="@+id/backgroundImage"
-                android:contentDescription="@string/exhibit_background_image"
                 android:scaleType="centerCrop"
                 android:alpha=".45"
                 android:layout_height="match_parent"
@@ -36,8 +35,8 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="85dp"
-                android:layout_marginTop="50dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
                 android:alpha=".35"
@@ -48,8 +47,7 @@
                 tools:text="King James Bible, 3rd Folio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/exhibit_title"
-                android:layout_marginTop="65dp"
+                android:layout_marginTop="10dp"
                 android:id="@+id/titleView"
                 android:background="@color/transparent"
                 android:textColor="@color/md_white_1000"
@@ -70,7 +68,7 @@
                     tools:text="Lorem ipsum dolor sit amet, sit justo altera volumus eu, te pri assum debet noster. Eu dicat iisque ius, at eum ceteros rationibus, nam at possit adolescens. Cu his munere habemus, movet labores facilis et duo, vivendum referrentur quo et. His cu alia facilis. Has ocurreret dissentiet eu, eum iudico appareat invidunt in, est mundi omnes affert at. Pro eu mediocrem principes, habeo solet antiopam ex quo, zril clita ne ius."
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/exhibit_description"
+
                     android:id="@+id/detailTextView"
 
                     android:textColor="@color/md_white_1000"/>

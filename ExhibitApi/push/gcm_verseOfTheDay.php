@@ -192,13 +192,15 @@ require_once("../config.php");
         $verses = [
             "In the beginning was the Word, and the Word was with God, and the Word was God. (Jn 1:1)",
             "In the beginning when God created the heavens and the earth (Gen 1:1)",
-            "For I know the plans I have for you, declares the LORD, plans to prosper you and not to harm you, plans to give you hope and a future. (Jer 29:11)"
+            "For I know the plans I have for you, declares the LORD, plans to prosper you and not to harm you, plans to give you hope and a future. (Jer 29:11)",
+            "One thing I ask from the LORD, this only do I seek: that I may dwell in the house of the LORD all the days of my life, to gaze on the beauty of the LORD and to seek him in his temple. (Psa 27:4)",
+            "A friend loves at all times, and a brother is born for a time of adversity. (Pro 17:17)"
         ];
 
         $books = [
-            43,1,24
+            43,1,24,19,20
         ];
-        $bookNames = ["John","Genesis","Jeremiah"];
+        $bookNames = ["John","Genesis","Jeremiah","Psalms","Proverbs"];
 
         $chapters = [1,1,29];
         $verseNumbers = [1,1,11];
